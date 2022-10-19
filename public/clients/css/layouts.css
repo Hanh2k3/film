@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+body {
+    padding: 0 8vw;
+    font-size: 14px;
+    font-family: roboto,sans-serif;
+    font-weight: 400;
+    color: #ccc;
+    line-height: normal;
+    background-color: #000 !important ;
+    margin: 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#navbar {
+    display: flex;
+    padding: 20px; 
+    border-bottom: 1px solid #424242;
+    background-color: #404040;
+}
+
+#navbar .logo {
+    flex : 1   
+}
+
+#navbar .search-bar {
+    flex : 2 ;
+    margin: 0 20px; 
+}
+.search-bar form {
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    padding: 20px 9px 9px 11px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.search-bar input {
+    width : 90%;
+    line-height : 100%; 
+    outline: none;
+    border : none; 
+    background-color: black;
+    color : #4040C1;
+}
+.search-bar button {
+    border : none;
+    background: none;
+    color : #4040C1;
+}
+.search-bar button i {
+    background-color: none;
+}
+.search-bar button i::before {
+    font-size: 20px;
+}
+
+
+
+#navbar .icon {
+    display: flex; 
+    flex: 1; 
+    justify-content: space-around;
+}
+#navbar a {
+    display: block; 
+    text-decoration: none;
+    padding: 7px 19px;
+    margin: 3px;
+    font-size: 20px;
+    display: inline-flex;
+    background-color: #000;
+    border: 1px solid #404040;
+    border-radius: 5px;
+}
+#navbar a:hover  i {
+    color : rgb(200, 210, 180);
+
+}
+.icon i { 
+    margin-top: 10px;
+    font-size: 22px;
+    color : #4040FC
+}
+
+
+
+
