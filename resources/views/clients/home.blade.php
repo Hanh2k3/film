@@ -15,7 +15,7 @@
 
 @section('content')
 
-    <div class="carousel">
+    <div class="carousel margin-20">
         <div class="banner">
             <div>Phim đề cử</div>
         </div>
@@ -106,11 +106,140 @@
             <div class="swiper-pagination"></div>
           </div>
     </div>
+    <div class="margin-20">
+         <div class="banner">
+            <div>Phim mới nhất</div>
+         </div>
+    </div>
+   
+    <div class="movies-list margin-20">
+        
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
 
-    <div class="list_film">
-        <div class="banner">
-            <div>Phim đề cử</div>
-        </di
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+
+         
+       <div class="movie-item">
+                <a href="">
+                    <div class="episode-latest">12/29</div>
+                    <div>
+                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
+                    </div>
+
+                    <div class="score">9.2</div>
+
+                    <div class="name-movie">Đấu la đại lục</div>
+                </a>
+        </div>
+            
+
+        
     </div>
     <script src="{{asset('clients/js/swiper-bundle.min.js')}}"></script>
     <script src="{{asset('clients/js/home.js')}}"></script>

@@ -19,6 +19,9 @@
         <div id="navbar">
             @include('layouts.navbar')
         </div>
+        <div class="drop_down un_active" id="drop">
+            @include('layouts.drop_down')
+        </div>
         <div class="content">
             @yield('content')
         </div>
@@ -26,6 +29,9 @@
         <div class="footer">
             @include('layouts.footer')
         </div>
+        
     </div>
+
+    <script src="{{asset('clients/js/layout.js')}}"></script>
 </body>
 </html>
