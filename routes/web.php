@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::prefix('/home') -> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
+
+Route::get('/', function () {
+    return view('welcomeeee');
+});
