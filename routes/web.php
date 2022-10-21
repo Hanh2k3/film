@@ -25,3 +25,13 @@ Route::prefix('/home') -> group( function () {
 Route::get('/', function () {
     return view('welcomeeee');
 });
+
+Route::prefix('/test') -> group( function () {
+    Route::get('', function () {
+        return "Test";
+    });
+});
+
+Route::get('/lolikun', function() {
+    return "ok";
+});
