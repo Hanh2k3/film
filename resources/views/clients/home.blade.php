@@ -244,5 +244,4 @@
     <script src="{{asset('clients/js/swiper-bundle.min.js')}}"></script>
     <script src="{{asset('clients/js/home.js')}}"></script>
 
-    
 @endsection
