@@ -22,12 +22,12 @@ Route::prefix('/home') -> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
 
-<<<<<<< HEAD
 Route::prefix('/test') -> group( function () {
     Route::get('', function () {
         return "Test";
     });
 });
-=======
 
->>>>>>> f294502f22a1a70c4f8d13321d08ac01df84f64e
+Route::get('/lolikun', function() {
+    return "ok";
+});
