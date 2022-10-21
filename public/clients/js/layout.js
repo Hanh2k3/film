@@ -24,12 +24,16 @@ function hide(t) {
     t.classList.add('un_active');
     var ac = document.getElementById('bu')
     ac.classList.remove('ac')
+    var navbar = document.getElementById('navbar')
+    navbar.classList.remove('acti')
 }
 
 function visible(t) {
     t.classList.remove('un_active')
     var ac = document.getElementById('bu')
     ac.classList.add('ac')
+    var navbar = document.getElementById('navbar')
+    navbar.classList.add('acti')
 }
 function toggle() {
     var t = document.getElementById('drop')
