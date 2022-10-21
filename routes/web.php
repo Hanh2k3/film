@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\ViewFilmController;
+use App\Http\Controllers\InforFilmController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,20 +24,16 @@ Route::prefix('/home') -> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
 
-Route::get('/', function () {
-    return view('welcomeeee');
+// InforFilm 
+Route::prefix('/infor') -> group( function () {
+
+}); 
+
+// index film 
+Route::prefix('/viewPage') -> group( function () {
+
 });
 
 
-Route::prefix('/test') -> group( function () {
-    Route::get('', function () {
-        return "Test";
-    });
-});
 
-Route::get('/lolikun', function() {
-    return "ok";
-});
-
-// test file 
 
