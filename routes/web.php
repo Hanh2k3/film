@@ -21,3 +21,9 @@ Route::get('/', function () {
 Route::prefix('/home') -> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
+
+Route::prefix('/test') -> group( function () {
+    Route::get('', function () {
+        return "Test";
+    });
+});
