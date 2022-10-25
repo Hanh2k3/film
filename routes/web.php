@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\ViewFilmController;
-use App\Http\Controllers\InforFilmController; 
+use App\Http\Controllers\Client\HomeController; 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +17,17 @@ use App\Http\Controllers\InforFilmController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// admin 
+Route::prefix('admin') -> group( function () {
+
+}); 
+
+
+
+
+
 
 // home page  
 Route::prefix('/home') -> group( function () {
