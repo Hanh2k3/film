@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\Client\HomeController; 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +18,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// admin 
+Route::prefix('admin') -> group( function () {
+
+}); 
+
+
+
+
+
+
 // home page  
 Route::prefix('/home') -> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
 
-Route::prefix('/test') -> group( function () {
-    Route::get('', function () {
-        return "Test";
-    });
+// InforFilm 
+Route::prefix('/infor') -> group( function () {
+
+}); 
+
+// index film 
+Route::prefix('/viewPage') -> group( function () {
+
 });
+
+
+
+
