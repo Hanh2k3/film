@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\HomeController; 
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ViewFilmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::prefix('/infor') -> group( function () {
 
 // index film 
 Route::prefix('/viewPage') -> group( function () {
-
+    Route::get('', [ViewFilmController::class, 'index']);
 });
 
 
