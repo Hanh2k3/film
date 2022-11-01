@@ -1,0 +1,57 @@
+div.bottom_content {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--titleBackgroundColor);
+    border-radius: 5px;
+    display: flex;
+}
+
+.episode_film {
+    background-color: var(--childBackgroundColor);
+    width: 35%;
+    max-width: 370px;   
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+
+.episode_film .episode_title {
+    width: 84%;
+    margin: auto;
+    padding: 9px 0;
+    text-align: center;
+    color: var(--titleColor);
+    font-size: var(--fontSize);
+    font-weight: 500;
+    background-color: var(--titleBackgroundColor);
+    border-radius: 5px;
+}
+
+.episode_film .episode_container {
+    width: 84%;
+    margin: auto;
+    background-color: var(--titleBackgroundColor);
+}
+.episode_film .episode_container div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 2px;
+    background-color: var(--backgroundColor);
+    border: solid 2px var(--titleBackgroundColor);
+    border-radius: 8px;
+}
+.episode_film .episode_container div a {
+    display: block;
+    width: 20%;
+    color: var(--titleColor);
+    text-align: center;
+    text-decoration: none;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+.episode_film .episode_container div a:hover{
+    background-color: rgb(95, 95, 95);
+}

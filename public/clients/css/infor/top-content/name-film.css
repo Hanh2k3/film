@@ -1,0 +1,36 @@
+:root {
+    --titleBackgroundColor: rgb(28, 28, 28);
+    --titleColor: rgb(216, 216, 216);
+    --backgroundColor: #404040;
+
+    --buttonColor: rgb(255, 255, 255);
+    --buttonBackgroundColor: rgb(130, 130, 130);
+    --buttonBackgroundColorOnHover: rgb(88, 88, 88);
+
+
+    --fontSize: 13px;
+    --fontSizeMini: 12px;
+    --childBackgroundColor: grey;
+    --textShadow: 0 0 4px black;
+    --boxShadow: 0 0 25px black;
+}
+
+div.content {
+    padding: 10px;
+}
+div.top_content {
+    width: 100%;
+}
+div.top_content .name_film {
+    width: 100%;
+}
+div.top_content .name_film p {
+    color: var(--titleColor);
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+    padding:  10px 0;
+    background-color: var(--titleBackgroundColor);
+    border-radius: 5px;
+}
