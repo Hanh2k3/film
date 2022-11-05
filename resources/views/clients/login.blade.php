@@ -1,7 +1,9 @@
 @extends('layouts.main_layout')
 
+@extends('layouts.main_layout')
+
 @section('title')
-    Trang chủ    
+    Login   
 @endsection
 
 @section('meta_tag')

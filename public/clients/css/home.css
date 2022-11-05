@@ -2,6 +2,8 @@
 .banner {
     background-color: #242525;
     margin: 10px 0;
+    border: solid 1px #e5ab0c;
+    border-radius: 5px;
 }
 .banner  div {
     display: inline-block;
@@ -11,6 +13,10 @@
     font-weight: 700;
     color : #a7a7a7;
     background-color: black;
+    margin-left: 2px;
+}
+#slide {
+    border: 1px solid #e5ab0c; ;
 }
 
 .margin-20 {
@@ -88,6 +94,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+    border: 1px solid #e5ab0c;
 }
 
 
