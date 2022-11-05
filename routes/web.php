@@ -20,9 +20,10 @@ Route::get('/', function () {
 
 
 // admin 
-Route::prefix('admin') -> group( function () {
+Route::prefix('admin') -> name('admin') -> group( function () {
 
 }); 
+
 
 
 
