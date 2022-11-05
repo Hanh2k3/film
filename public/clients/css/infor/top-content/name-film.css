@@ -1,22 +1,24 @@
 :root {
-    --titleBackgroundColor: rgb(28, 28, 28);
-    --titleColor: rgb(216, 216, 216);
-    --backgroundColor: #404040;
+    --titleColor: rgb(255, 185, 112);
+
+    --themeBackgroundColor: rgb(29, 28, 28);
+    --themeColor: rgb(216, 216, 216);
+    --backgroundColor: rgb(29, 28, 28);
 
     --buttonColor: rgb(255, 255, 255);
-    --buttonBackgroundColor: rgb(130, 130, 130);
-    --buttonBackgroundColorOnHover: rgb(88, 88, 88);
+    --buttonBackgroundColor: rgb(16, 177, 134);
+    --buttonBackgroundColorOnHover: rgb(17, 158, 123);
 
 
     --fontSize: 13px;
     --fontSizeMini: 12px;
-    --childBackgroundColor: grey;
+    --childBackgroundColor: rgb(0, 0, 0);
     --textShadow: 0 0 4px black;
-    --boxShadow: 0 0 25px black;
+    --boxShadow: 0 0 25px rgb(7, 66, 49);
 }
 
 div.content {
-    padding: 10px;
+    padding: 20px;
 }
 div.top_content {
     width: 100%;
@@ -26,11 +28,12 @@ div.top_content .name_film {
 }
 div.top_content .name_film p {
     color: var(--titleColor);
-    font-weight: 500;
+    font-weight: bolder;
     font-size: 18px;
     text-align: center;
     margin: 0;
-    padding:  10px 0;
-    background-color: var(--titleBackgroundColor);
+    padding: 12px;
+    background-color: black;
     border-radius: 5px;
+    border: solid 1px var(--titleColor);
 }

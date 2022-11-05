@@ -1,17 +1,18 @@
 div.bottom_content {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 10px;
-    background-color: var(--titleBackgroundColor);
+    background-color: var(--themeBackgroundColor);
     border-radius: 5px;
     display: flex;
+    border: solid 1px var(--titleColor);
 }
 
 .episode_film {
     background-color: var(--childBackgroundColor);
     width: 35%;
     max-width: 370px;   
-    padding: 5px 0px;
+    padding: 10px 0px;
     border-radius: 5px;
 }
 
@@ -20,34 +21,36 @@ div.bottom_content {
     margin: auto;
     padding: 9px 0;
     text-align: center;
-    color: var(--titleColor);
+    color: var(--titleColor );
     font-size: var(--fontSize);
     font-weight: 500;
-    background-color: var(--titleBackgroundColor);
+    background-color: var(--themeBackgroundColor);
     border-radius: 5px;
+    border: solid 1px var(--titleColor);
 }
 
 .episode_film .episode_container {
     width: 84%;
     margin: auto;
-    background-color: var(--titleBackgroundColor);
 }
 .episode_film .episode_container div {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     width: 100%;
     margin: auto;
     margin-top: 5px;
-    padding: 2px;
+    padding: 5px;
     background-color: var(--backgroundColor);
-    border: solid 2px var(--titleBackgroundColor);
+    border: solid 1px var(--titleColor);
     border-radius: 8px;
 }
 .episode_film .episode_container div a {
     display: block;
-    width: 20%;
-    color: var(--titleColor);
+    width: 19%;
+    color: var(--themeColor);
     text-align: center;
+    margin-bottom: 2px;
     text-decoration: none;
     border: solid 1px grey;
     border-radius: 5px;

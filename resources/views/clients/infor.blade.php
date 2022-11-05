@@ -19,7 +19,7 @@
     <div class="top_content">
         <div class="name_film">
             {{-- Put data here --}}
-            <p>Thôn Phệ Tinh Không</p>
+            <p><i class="ti-video-clapper"> </i> Thôn Phệ Tinh Không</p>
         </div>
         <div class="main_film">
             <div class="poster_film" id="poster_film">
@@ -27,8 +27,8 @@
                     <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
                     <div>
                         <div class="button_box">
-                            <a class="btn_watch" href="{{ "#" }}">Xem phim</a>
-                            <a class="btn_remember" href="{{ "#" }}">Lưu phim</a>
+                            <a class="btn_watch" href="{{ '#' }}">Xem phim</a>
+                            <a class="btn_remember" href="{{ '#' }}">Lưu phim</a>
                         </div>
                     </div>
                 </div>
@@ -102,30 +102,30 @@
                 </div>
             </div>
             <div class="comment_container">
-                <div>
-                    <form action="{{ "#" }}">
-                        <input type="text" name="your_comment" placeholder="Nhập bình luận">
-                        <div><input type="submit" value="Bình luận"></div>
-                    </form>
-                    <ul class="comment_list">
-                        {{-- Put data here --}}
-                        @foreach ($details as $comment)
-                            <li>
-                                <div class="c_comment_head">
-                                    <a href="#">AVT</a>
-                                </div>
+                <form action="{{ '#' }}">
+                    <input type="text" name="your_comment" placeholder="Nhập bình luận">
+                    <div><input type="submit" value="Bình luận"></div>
+                </form>
+                <ul class="comment_list">
+                    {{-- Put data here --}}
+                    @foreach ($details as $comment)
+                        <li>
+                            <div class="c_comment_head">
+                                <a href="#">AVT</a>
+                            </div>
+                            <div>
                                 <div class="c_comment_body">
-                                    <a class="c_comment_user" href="#">{{ "Name of User" }}</a>
-                                    <p class="c_comment_content">{{ "This is a test comment" }}</p>
-                                    <p class="c_comment_time">{{ "comment time" }}</p>
+                                    <a class="c_comment_user" href="#">{{ 'Name of User' }}</a>
+                                    <p class="c_comment_content">{{ 'This is a test comment' }}</p>
+                                    <p class="c_comment_time">{{ 'comment time' }}</p>
                                 </div>
                                 <div class="c_comment_tail">
                                     {{-- Continue --}}
                                 </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
