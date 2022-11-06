@@ -1,0 +1,93 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-google img {
+    width: 330px;
+    height: 66px; 
+}
+
+.login form {
+    margin-top: 20px; 
+    width: 500px;
+    
+}
+
+.login form .item label {
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    color: #ccc;
+    margin-top: 15px;
+}
+.login form .item input {
+    line-height: 20px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #000;
+    opacity: .8;
+    color: #e6dddd!important;
+    box-sizing: border-box;
+    outline: none;
+}
+input, button {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+.login .button {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.button .btn-login {
+    display: flex;
+    align-items: center;
+}
+.btn-login button {
+    display: inline-flex;
+    border-radius: 5px;
+    margin: 0 2px;
+    padding: 10px;
+    border-bottom: 3px solid #000000;;
+    cursor: pointer;
+    color: #fff;
+    background-color: #b73a3a;
+    transition: all 0.3s;
+}
+.btn-login button:hover {
+    opacity: 0.5;
+}
+.btn-login a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #cac9c9;
+    text-align: center;
+}
+.btn-login a:hover {
+    color: rgb(201, 201, 24)
+}
+
+.btn-register a {
+    margin: 5px 0;
+    display: inline-flex;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #369e69;
+    text-decoration: none;
+    color: #cac9c9;
+    border-bottom: 3px solid #000000;;
+    cursor: pointer;
+    transition: all 0.3s; 
+
+}
+.btn-register a:hover {
+    opacity: 0.7; 
+}

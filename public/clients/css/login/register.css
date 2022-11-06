@@ -1,0 +1,7 @@
+#forget-password a {
+    text-decoration: none;
+    margin-left: 2px;
+}
+#forget-password a:hover {
+    color: rgb(197, 197, 28); 
+}

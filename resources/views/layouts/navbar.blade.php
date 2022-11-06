@@ -11,7 +11,7 @@
 <div class="icon">
     <a href="#" onclick="toggle()" class="" id="bu" ><i class="ti-menu"></i></a>
     <a href=""><i class="ti-bookmark-alt"></i></a>
-    <a href=""><i class="ti-user"></i></a>
+    <a href="{{route('login.')}}"><i class="ti-user"></i></a>
 </div>
 
 

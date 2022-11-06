@@ -1,6 +1,5 @@
 @extends('layouts.main_layout')
 
-@extends('layouts.main_layout')
 
 @section('title')
     Login   
@@ -13,237 +12,47 @@
 @section('link')
     <link rel="stylesheet" href="{{asset('clients/css/home.css')}}">
     <link rel="stylesheet" href="{{asset('clients/css/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('clients/css/login/login.css')}}">
+
 @endsection
 
 @section('content')
-
-    <div class="carousel margin-20">
-        <div class="banner">
-            <div>Phim đề cử</div>
-        </div>
-
-        <div class="swiper mySwiper slide-container" id="slide">
-            <div class="swiper-wrapper">
-                <div id="card" class="swiper-slide">
-                    <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                           <div>
-                               <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                           </div>
-                   </a>
-                   <div class="name">Phàm nhân tu tiên</div>
-                   <div class="episode-lastes">12/20</div>
-               </div>
-               
-                <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-
-                 <div id="card" class="swiper-slide">
-                         <a href="https://www.google.com/search?q=gg%20d%E1%BB%8Bch">
-                                <div>
-                                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
-                                </div>
-                        </a>
-                        <div class="name">Phàm nhân tu tiên</div>
-                        <div class="episode-lastes">12/20</div>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-    </div>
     <div class="margin-20">
-         <div class="banner">
-            <div>Phim mới nhất</div>
-         </div>
+        <div class="banner">
+        <div>Đăng nhập thành viên</div>
+        </div>
     </div>
-   
-    <div class="movies-list margin-20">
+
+    <div class="movies-list margin-20 login">
         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
+       <div class="login-google">
+            <a href=""><img src="{{asset('clients/images/logo/google-signin-button.png')}}" alt="Đăng nhập với google"></a>
 
-                    <div class="score">9.2</div>
+       </div>
+       <form action="">
+            <div class="item">
+                <label for="">Email</label>
+                <input type="text" name="email" id="" placeholder="Nhập email của bạn">
+            </div>
 
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
+            <div class="item">
+                <label for="">Mật khẩu</label>
+                <input type="password" name="password" id="" placeholder="Nhập mật khẩu của bạn">
+            </div>
+            <div class="button">
+                <div class="btn-login">
+                    <button>Đăng nhập</button>
+                    <a href="">Quên mật khẩu</a>
+                    
+                </div>
+                <div class="btn-register">
+                    <a href="{{route('register.')}}">Đăng ký</a>
+                </div>
 
-                    <div class="score">9.2</div>
+            </div>
+       </form>
 
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-
-         
-       <div class="movie-item">
-                <a href="">
-                    <div class="episode-latest">12/29</div>
-                    <div>
-                        <img src="https://animehay.club//upload/poster/3626.jpg" alt="">
-                    </div>
-
-                    <div class="score">9.2</div>
-
-                    <div class="name-movie">Đấu la đại lục</div>
-                </a>
-        </div>
-            
-
-        
     </div>
-    <script src="{{asset('clients/js/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('clients/js/home.js')}}"></script>
+
 
 @endsection

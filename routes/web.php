@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ViewFilmController;
-
+use App\Http\Controllers\Client\LoginController; 
+use App\Http\Controllers\Client\RegisterController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,15 @@ Route::prefix('/infor') -> group( function () {
 // index film 
 Route::prefix('/viewPage') -> group( function () {
     Route::get('', [ViewFilmController::class, 'index']);
+});
+
+// login user 
+Route::prefix('/login') -> name('login.') -> group( function () {
+    Route::get('/', [LoginController::class, 'index']);
+    
+});
+Route::prefix('/register') -> name('register.') -> group( function () {
+    Route::get('/', [RegisterController::class, 'index']);
 });
 
 
