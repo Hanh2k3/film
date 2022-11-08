@@ -60,3 +60,10 @@ Route::prefix('/register') -> name('register.') -> group( function () {
     Route::post('/insert-user', [RegisterController::class, 'insert_user']) -> name('insert_user');
 });
 
+// forget password 
+Route::prefix('/forget-password') -> name('forget_password.') -> group( function () {
+    Route::get('/', [LoginController::class, 'view_forget_password']);
+
+    ROute::post('/', [LoginController::class, 'send_mail_password']); 
+});
+

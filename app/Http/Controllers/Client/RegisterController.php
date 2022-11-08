@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Str; 
+use App\Models\User; 
 
 class RegisterController extends Controller
 {
@@ -44,14 +45,18 @@ class RegisterController extends Controller
             'avt.mimes' => 'Vui lòng chọn hình ảnh', 
         ]);
 
+        $image = $request-> file('avt');
+        $imgName = current(explode('.', $image->getClientOriginalName()));
+        $extension = $image-> getClientOriginalExtension();
+        $img = $imgName.rand(1,100).'.'.$extension;
+        $image -> move('uploads/avatar', $img); 
+
+        $data['avt'] = $img; 
         $data['user_name'] = $request -> user_name; 
-        $data['user_email'] = $request -> email ; 
-        $data['avt'] = $request -> file('avt'); 
+        $data['user_email'] = $request -> email ;      
         $data['password'] = $request -> password; 
-
-        dd($data); 
-
-
-         
+        User::insert_user($data);
+        session()-> put('register_success', 'Đăng ký thành công vui lòng nhập email và mật khẩu để đăng nhập'); 
+        return redirect() -> route('login.'); 
     }
 }
