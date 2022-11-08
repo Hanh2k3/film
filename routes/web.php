@@ -56,8 +56,7 @@ Route::prefix('/login') -> name('login.') -> group( function () {
 });
 Route::prefix('/register') -> name('register.') -> group( function () {
     Route::get('/', [RegisterController::class, 'index']);
+    
+    Route::post('/insert-user', [RegisterController::class, 'insert_user']) -> name('insert_user');
 });
-
-
-
 
