@@ -26,7 +26,7 @@
     <div class="movies-list margin-20 login">
         
        <div class="login-google">
-            <a href=""><img src="{{asset('clients/images/logo/google-signin-button.png')}}" alt="Đăng nhập với google"></a>
+            <a href="{{route('login.login_google')}}"><img src="{{asset('clients/images/logo/google-signin-button.png')}}" alt="Đăng nhập với google"></a>
        </div>
        <div class="login-google mt-3">
          @if (session('register_success'))

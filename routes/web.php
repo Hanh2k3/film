@@ -17,9 +17,7 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 // admin 
@@ -34,8 +32,8 @@ Route::prefix('admin') -> name('admin') -> group( function () {
 
 
 // home page  
-Route::prefix('/home') -> name('home.')-> group( function () {
-    Route::get('', [HomeController::class, 'index']);
+Route::prefix('/') -> name('home.')-> group( function () {
+    Route::get('/', [HomeController::class, 'index']);
 });
 
 // InforFilm 
@@ -52,8 +50,14 @@ Route::prefix('/viewPage') -> group( function () {
 
 // login user 
 Route::prefix('/login') -> name('login.') -> group( function () {
-    Route::get('/', [LoginController::class, 'index']);
-    
+    Route::get('/', [LoginController::class, 'index']) -> name('index');
+
+    Route::prefix('/google') -> group( function () {
+        Route::get('/', [LoginController::class, 'login_google']) -> name('login_google');
+        Route::get('/redirect', [LoginController::class, 'google_callback']);
+        Route::get('/policy', [LoginController::class, 'policy']) -> name('policy');  
+    }); 
+   
 });
 Route::prefix('/register') -> name('register.') -> group( function () {
     Route::get('/', [RegisterController::class, 'index']);

@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Str ;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
     //
-
     // view login 
     public function index(){
         return view('clients.login');
@@ -19,6 +19,44 @@ class LoginController extends Controller
 
     public function login() {
 
+    }
+
+    // login with google  
+    public function login_google() {
+        return Socialite::driver('google')->redirect();
+    }
+    public function google_callback(Request $request) {
+
+        $user = Socialite::driver('google')->user();
+
+        dd($user); 
+
+        $data['provider'] = 'google';
+        $data['provider_user_id'] = $user->id;
+        $data['status'] = 0; 
+        
+        $account = User::userSocial($data);
+        if($account) {
+            $request->session()->put('login_success','login_success'); 
+            $request -> session() -> put('provider_user_id', $user->id);
+            $request->session()->put('provider', 'google');
+            return redirect() -> route('home.');
+
+        } else {
+            $data['name'] = $user->name;
+            $data['provider'] = 'google';
+            $data['provider_user_id'] = $user->id;
+            $data['email_social'] = $user->email;
+
+            User::create_user_social($data); 
+
+            $request->session()->put('login_success','login_success'); 
+            $request -> session() -> put('provider_user_id', $user->id);
+            $request->session()->put('provider', 'google');
+
+            return redirect() -> route('home.');
+
+        }
     }
 
     // forget password 
