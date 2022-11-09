@@ -5,6 +5,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ViewFilmController;
 use App\Http\Controllers\Client\LoginController; 
 use App\Http\Controllers\Client\RegisterController; 
+use App\Http\Controllers\TestController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,7 @@ Route::prefix('admin') -> name('admin') -> group( function () {
 
 
 // home page  
-Route::prefix('/home') -> group( function () {
+Route::prefix('/home') -> name('home.')-> group( function () {
     Route::get('', [HomeController::class, 'index']);
 });
 
@@ -64,6 +65,11 @@ Route::prefix('/register') -> name('register.') -> group( function () {
 Route::prefix('/forget-password') -> name('forget_password.') -> group( function () {
     Route::get('/', [LoginController::class, 'view_forget_password']);
 
-    ROute::post('/', [LoginController::class, 'send_mail_password']); 
+    Route::post('/', [LoginController::class, 'send_mail_password']);
+
+    Route::get('/change-password/{id}/{token}', [LoginController::class, 'change_password_view']) -> name('change_password_view'); 
+    Route::post('/save-change_password', [LoginController::class, 'change_password']) -> name('change_password');
 });
+
+Route::get('/test', [TestController::class, 'test_send_mail']);
 

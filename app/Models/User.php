@@ -46,4 +46,28 @@ class User extends Authenticatable
     static function insert_user($data) {
         DB::table('users')->insert($data);
     }
+    // get user by email 
+    static function get_user_by_email($email) {
+        $email = DB::table('users')-> select('user_email', 'user_name', 'user_id') -> where('user_email', $email) -> first();
+        return $email ; 
+
+    }
+
+
+
+
+    // update token 
+    static function update_token($id, $token) {
+        DB::table('users')-> where('user_id', $id) -> update($token); 
+    }
+
+    static function check_token($id, $token) {
+        $token = DB::table('users') -> select('token')->where('user_id', $id) -> where('token', $token)-> first(); 
+        return $token; 
+    }
+
+    // change password 
+    static function change_password($user_id, $password) {
+        DB::table('users') -> where('user_id', $user_id) -> update(['password' => $password]);
+    }
 }

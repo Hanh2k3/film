@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+use Str ;
 
 class LoginController extends Controller
 {
@@ -14,12 +17,9 @@ class LoginController extends Controller
         return view('clients.login');
     }
 
+    public function login() {
 
-
-
-
-
-
+    }
 
     // forget password 
     public function view_forget_password() {
@@ -37,8 +37,48 @@ class LoginController extends Controller
 
 
         $email = $request-> email;
+        $user = User::get_user_by_email($email);
+        $user_name = $user->user_name;
+        $user_email = $user->user_email;
+        $user_id = $user->user_id;
 
-        // send mail 
+        $token['token'] = Str::random(10);
+        $token1 = $token['token'];
+        User::update_token($user_id, $token);
+        Mail::send('clients.mail_change_password', ['user_id' => $user_id ,'token' => $token1] , function ($email) use($user_email, $user_name) {
+            $email -> to($user_email, $user_name) -> subject("Thay đổi mật khẩu"); // error here
+        });
+        return back() -> with('send_mail_success', 'Vui lòng kiểm tra email của bạn'); 
+    }
+
+    // change password 
+    public function change_password_view($id, $token) {
+   
+        $check = User::check_token($id, $token);
+        $user_id = $id; 
+    
+        if($check != null) {
+            return view('clients.change_password_view', compact('user_id'));
+        } 
+        return back(); 
+    }
+
+    public function change_password(Request $request) {
+        $request ->  validate([
+            'password' => ['required', 'min:6'], 
+            'confirm_password' => ['required', 'same:password'],
+        ],[
+            'password.required' => 'Vui lòng nhập mật khẩu mới của bạn',
+            'password.min' => 'Mật khẩu ít nhất 6 ký tự', 
+            'confirm_password.required' => 'Vui lòng nhập trường này',
+            'confirm_password.same' => 'Không giống với mật khẩu'
+        ]);
+        $user_id = $request-> user_id;
+        $password = MD5($request-> password);
+        User::change_password($user_id, $password); 
+        $token['token'] = null; 
+        User::update_token($user_id, $token);
+        return redirect() -> route('login.') -> with('change_password_success', 'Thay đổi mật khẩu thành công'); 
 
     }
 }

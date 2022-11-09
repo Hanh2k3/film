@@ -36,6 +36,14 @@
             @endphp
   
          @endif   
+
+         @if (session('change_password_success'))
+            <div class="alert alert-success">{{session('change_password_success')}}</div>
+         @php
+             session() -> put('change_password_success', null); 
+         @endphp
+
+      @endif  
         
        </div>
        <form action="">

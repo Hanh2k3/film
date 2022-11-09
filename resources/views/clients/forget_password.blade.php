@@ -26,12 +26,11 @@
     <div class="movies-list margin-20 login">
         
        <div class="login-google mt-3">
-         @if (session('register_success'))
-            <div class="alert alert-success">{{session('forget_success')}}</div>
+         @if (session('send_mail_success'))
+            <div class="alert alert-success">{{session('send_mail_success')}}</div>
             @php
-                session() -> put('register_success', null); 
+                session() -> put('send_mail_success', null); 
             @endphp
-  
          @endif   
         
        </div>
