@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ViewFilmController;
@@ -22,8 +23,8 @@ Route::get('/', function () {
 
 
 // admin 
-Route::prefix('admin') -> name('admin') -> group( function () {
-
+Route::prefix('/admin') -> name('admin') -> group( function () {
+    Route::get('adminPage', [AdminController::class, 'index']);
 }); 
 
 

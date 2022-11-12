@@ -6,6 +6,7 @@
     border-radius: 5px;
     background-color: black;
     padding: 10px;
+    border: 2px solid rgba(255, 185, 112, 1);
 }
 .intro_film a{
     text-decoration: none;
@@ -141,6 +142,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+    border: 2px solid rgba(255, 185, 112, 1);
 }
 .list_episode .heading{
     display: flex;
@@ -203,6 +205,7 @@
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+    border: 2px solid rgba(255, 185, 112, 1);
 }
 .gd_comment .header_cm{
     display: flex;
