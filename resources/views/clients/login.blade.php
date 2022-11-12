@@ -26,8 +26,25 @@
     <div class="movies-list margin-20 login">
         
        <div class="login-google">
-            <a href=""><img src="{{asset('clients/images/logo/google-signin-button.png')}}" alt="Đăng nhập với google"></a>
+            <a href="{{route('login.login_google')}}"><img src="{{asset('clients/images/logo/google-signin-button.png')}}" alt="Đăng nhập với google"></a>
+       </div>
+       <div class="login-google mt-3">
+         @if (session('register_success'))
+            <div class="alert alert-success">{{session('register_success')}}</div>
+            @php
+                session() -> put('register_success', null); 
+            @endphp
+  
+         @endif   
 
+         @if (session('change_password_success'))
+            <div class="alert alert-success">{{session('change_password_success')}}</div>
+         @php
+             session() -> put('change_password_success', null); 
+         @endphp
+
+      @endif  
+        
        </div>
        <form action="">
             <div class="item">
@@ -42,7 +59,7 @@
             <div class="button">
                 <div class="btn-login">
                     <button>Đăng nhập</button>
-                    <a href="">Quên mật khẩu</a>
+                    <a href="{{route('forget_password.')}}">Quên mật khẩu</a>
                     
                 </div>
                 <div class="btn-register">

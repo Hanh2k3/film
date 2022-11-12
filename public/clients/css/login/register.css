@@ -5,3 +5,11 @@
 #forget-password a:hover {
     color: rgb(197, 197, 28); 
 }
+#code-id {
+    font-weight: bold; 
+    padding-left: 40px;
+    background-color: black; 
+    display: inline-block; 
+    width: 30%;
+    color: rgb(255 255 0 / 99); 
+}
