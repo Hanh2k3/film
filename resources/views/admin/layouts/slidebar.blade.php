@@ -78,18 +78,18 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div data-i18n="Layouts">Layouts</div>
+        <div data-i18n="Layouts">Quản lý danh mục</div>
       </a>
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
-            <div data-i18n="Without menu">Without menu</div>
+          <a href="{{ route('admincategory.create') }}" class="menu-link">
+            <div data-i18n="Without menu">Thêm danh mục</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-without-navbar.html" class="menu-link">
-            <div data-i18n="Without navbar">Without navbar</div>
+          <a href="{{ route('admincategory.index') }}" class="menu-link">
+            <div data-i18n="Without navbar">Danh sách danh mục</div>
           </a>
         </li>
         <li class="menu-item">
@@ -110,18 +110,16 @@
       </ul>
     </li>
 
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Pages</span>
-    </li>
+    
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div data-i18n="Account Settings">Account Settings</div>
+        <div data-i18n="Account Settings">Quản lý phim</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="pages-account-settings-account.html" class="menu-link">
-            <div data-i18n="Account">Account</div>
+          <a href="{{ route('adminfilm.create') }}" class="menu-link">
+            <div data-i18n="Account">Thêm phim</div>
           </a>
         </li>
         <li class="menu-item">

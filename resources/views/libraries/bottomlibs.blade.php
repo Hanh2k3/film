@@ -19,3 +19,9 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+{{-- CKEditor --}}
+<script src="{{asset('admin/ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace('editor1');
+</script>
