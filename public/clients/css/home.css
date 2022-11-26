@@ -58,8 +58,6 @@
     color: #fff;
     padding: 10px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space:nowrap;
     font-weight: 700;
     font-size: 20px; 
 }

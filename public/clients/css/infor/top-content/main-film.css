@@ -20,6 +20,8 @@
     width: 84%;
     margin: auto;
     background-color: var(--titleColor);
+    transition: all 0.5s;
+    
 }
 .poster_film .poster img{
     width: 100%;    
@@ -54,6 +56,7 @@
     color: var(--themeColor);
     background-color: rgba(0, 0, 0, 0.758);
     box-shadow: 0 0 3px rgb(91, 91, 91);
+    transition: all 0.3s; 
 }
 .poster_film .poster > div .button_box a:hover {
     background-color: rgba(38, 38, 38, 0.758);
@@ -152,5 +155,6 @@
 }
 .detail_film button:hover {
     background-color: var(--buttonBackgroundColorOnHover);
+    transition: all 0.3s; 
 }
 

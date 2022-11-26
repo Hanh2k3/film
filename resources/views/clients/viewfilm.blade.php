@@ -16,9 +16,9 @@
     <div class="f_content">
         <div class="watch_film">
             <div class="intro_film">
-                <a href="#" class="fw-700"><i class="ti-video-clapper"></i>Vạn Giới Tiên Trung</a>
+                <a href="#" class="fw-700"><i class="ti-video-clapper"></i>{{$film->film_name}}</a>
                 <div class="fw-700">
-                    <span>Đang xem Tập ?</span>
+                    <span>Đang xem Tập {{$episode }}</span>
                     <span>Đăng tải ? giờ trước</span>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="chap_film">
                 <div class="episode">
                     <div class="episode_number">
-                        Tập 1
+                        Tập {{$episode}}
                     </div>
                 </div>
                 <div class="info_error">
@@ -36,6 +36,7 @@
             </div>
 
             <div class="content_film">
+                <iframe src="https://www.dailymotion.com/embed/video/x8c0gv2?autoplay=1" style="width: 100%; height: 100%;" frameborder="0"></iframe>
 
             </div>
 
@@ -44,7 +45,7 @@
                     <i class="ti-settings"></i>
                 </div>
                 <div class="next_film pd-7 bd-r-5">
-                    <a href="#" class="pd-7">Tiếp<i class="ti-control-forward"></i></a>
+                    <a href="{{route('viewPage.', ['film_id' => $film->film_id, 'episode_id' => $episode + 1])}}" class="pd-7">Tiếp<i class="ti-control-forward"></i></a>
                 </div>
             </div>
 
@@ -54,9 +55,13 @@
                     <span class="fw-600">Lần trước xem<a href="#">Tập 1</a></span>
                 </div>
                 <div class="list_item_episode scroll-bar">
-                    @for ($i = 1; $i < 501; $i++)
-                        <a href="#"><span>1</span></a>
-                    @endfor
+                    @foreach ($list_episodes as $item )
+                        @if ($item-> episode_number == $episode)
+                            <a href="{{route('viewPage.', ['film_id' => $film->film_id, 'episode_id' => $item->episode_number])}}" class="active"><span>{{$item-> episode_number}}</span></a>
+                            @continue
+                        @endif
+                        <a href="{{route('viewPage.', ['film_id' => $film->film_id, 'episode_id' => $item->episode_number])}}"><span>{{$item-> episode_number}}</span></a>
+                    @endforeach
                 </div>
             </div>
 

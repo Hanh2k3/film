@@ -24,10 +24,10 @@
         <div class="main_film">
             <div class="poster_film" id="poster_film">
                 <div class="poster" id="poster_id">
-                    <img src="https://animehay.club/upload/poster/3518-1659146047.jpg" alt="">
+                    <img src="{{$film->img}}" alt="">
                     <div>
                         <div class="button_box">
-                            <a class="btn_watch" href="{{ '#' }}">Xem phim</a>
+                            <a class="btn_watch" href="{{route('viewPage.', ['film_id' => $id, 'episode_id' => 1 ])}}">Xem phim</a>
                             <a class="btn_remember" href="{{ '#' }}">Lưu phim</a>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="detail">
                     <div class="detail_list" id="detail_list">
                         <table class="detail_content">
-                            @foreach ($details as $row)
+                            @foreach ($list_episodes as $row)
                                 <tr class="table_row">
                                     {{-- Put data here --}}
                                     <th>Trạng thái:</th>
@@ -61,10 +61,7 @@
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
                             {{-- Put data here --}}
-                            @foreach ($details as $row)
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit. Ex?</p>
-                            @endforeach
+                           <p>{{$film->description}}</p>
                         </div>
                     </div>
                 </div>
@@ -82,8 +79,8 @@
             <div class="episode_container">
                 <div>
                     {{-- Put data here --}}
-                    @foreach ($details as $episode)
-                        <a href="#">{{ $episode }}</a>
+                    @foreach ($list_episodes as $episode)
+                        <a href="{{route('viewPage.', ['film_id' => $id, 'episode_id' => $episode->episode_number])}}">{{ $episode->episode_number }}</a>
                     @endforeach
                 </div>
             </div>
@@ -108,7 +105,7 @@
                 </form>
                 <ul class="comment_list">
                     {{-- Put data here --}}
-                    @foreach ($details as $comment)
+                    @foreach ($list_episodes as $comment)
                         <li>
                             <div class="c_comment_head">
                                 <a href="#">AVT</a>
