@@ -191,6 +191,10 @@
     width: 5%;
     font-size: 14px;
 }
+.list_episode .list_item_episode .active {
+    background-color: #ce6464;
+    opacity: 0.8;
+}
 .list_episode .list_item_episode a:hover{
     background-color: #ce6464;
     opacity: 0.8;

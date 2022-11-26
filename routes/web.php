@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ViewFilmController;
 use App\Http\Controllers\Client\LoginController; 
 use App\Http\Controllers\Client\RegisterController; 
+use App\Http\Controllers\Client\InforController;
 use App\Http\Controllers\TestController; 
 /*
 |--------------------------------------------------------------------------
@@ -32,21 +33,21 @@ Route::prefix('/admin') -> name('admin') -> group( function () {
 
 
 
+
+
 // home page  
 Route::prefix('/') -> name('home.')-> group( function () {
     Route::get('/', [HomeController::class, 'index']);
 });
 
 // InforFilm 
-Route::prefix('/infor') -> group( function () {
-    Route::get('/', function() {
-        return view('clients.infor', ["details" => $details = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]]);
-    });
+Route::prefix('/infor') -> name('infor.')-> group( function () {
+    Route::get('/{id}', [InforController::class, 'index']) -> name('view');
 }); 
 
 // index film 
-Route::prefix('/viewPage') -> group( function () {
-    Route::get('', [ViewFilmController::class, 'index']);
+Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
+    Route::get('/{film_id}/{episode_id}', [ViewFilmController::class, 'index']) ;
 });
 
 // login user 
