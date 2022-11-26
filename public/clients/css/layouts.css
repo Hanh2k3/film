@@ -26,6 +26,7 @@ body {
     padding: 20px; 
     border-bottom: 1px solid #1887b2;
     background-color: #404040;
+    position: relative;
 }
 
 #navbar .logo {
@@ -66,7 +67,52 @@ body {
     font-size: 20px;
 }
 
+/* infor-account */
+#navbar .infor-account {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    right: 0px;
+    top: 110px;
+    background-color: #000;
+    transition: all 0.3s;
+}
 
+.avatar {
+    padding: 10px 20px ;
+}
+.avatar img {
+    max-width: 150px; 
+    max-height: 150px;
+    border-radius: 50%; 
+    margin-left: 23px;
+}
+.avatar div {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+#navbar .account-active {
+    display: flex;
+    flex-direction: row;
+}
+#navbar .account-un_active {
+    display: none;
+}
+
+.infor-account a {
+    border: none !important; 
+    border-radius: 0 !important;
+    transition: all 0.3s;
+    margin: 0 !important;
+    padding: 5px 2px; 
+}
+.infor-account a:hover {
+    color:rgb(200, 210, 180); 
+    background-color: gray !important;
+}
 
 #navbar .icon {
     display: flex; 
@@ -178,4 +224,13 @@ body {
 
 .tab-content .un_active {
     display : none; 
+}
+
+
+a#hide_account{
+    color: red; 
+    display: none;
+}
+#hide_account i {
+    color: red; 
 }

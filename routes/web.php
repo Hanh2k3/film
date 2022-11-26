@@ -69,6 +69,9 @@ Route::prefix('/login') -> name('login.') -> group( function () {
     }); 
    
 });
+// logout user
+Route::get('/logout', [LoginController::class, 'logout']) -> name('logout');
+
 Route::prefix('/register') -> name('register.') -> group( function () {
     Route::get('/', [RegisterController::class, 'index']);
     

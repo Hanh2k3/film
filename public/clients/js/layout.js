@@ -42,3 +42,26 @@ function toggle() {
     else hide(t)
     
 }
+
+// display information account 
+function display_account() {
+    var acc = document.getElementById('account'); 
+    var display_account = document.getElementById('display_account');
+    var hide_account = document.getElementById('hide_account');
+
+    display_account.style.display = 'none'; 
+    hide_account.style.display = 'block'; 
+    acc.style.display = 'flex'; 
+
+}
+
+function hide_account() {
+    var acc = document.getElementById('account'); 
+    var display_account = document.getElementById('display_account');
+    var hide_account = document.getElementById('hide_account');
+
+    display_account.style.display = 'block'; 
+    hide_account.style.display = 'none'; 
+    acc.style.display = 'none';
+
+}
