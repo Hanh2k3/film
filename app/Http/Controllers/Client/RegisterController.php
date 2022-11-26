@@ -57,6 +57,6 @@ class RegisterController extends Controller
         $data['password'] = MD5($request -> password); 
         User::insert_user($data);
         session()-> put('register_success', 'Đăng ký thành công vui lòng nhập email và mật khẩu để đăng nhập'); 
-        return redirect() -> route('login.'); 
+        return redirect() -> route('login.index'); 
     }
 }

@@ -53,6 +53,11 @@ class User extends Authenticatable
 
     }
 
+    static function check_user($email, $password) {
+        $user = DB::table('users') -> where('user_email', $email) -> where('password', $password) -> first();
+        return $user ;
+    }
+
 
 
 

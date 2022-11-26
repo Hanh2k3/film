@@ -60,6 +60,8 @@ Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
 Route::prefix('/login') -> name('login.') -> group( function () {
     Route::get('/', [LoginController::class, 'index']) -> name('index');
 
+    Route::post('/', [LoginController::class, 'login']) -> name('check_login'); 
+
     Route::prefix('/google') -> group( function () {
         Route::get('/', [LoginController::class, 'login_google']) -> name('login_google');
         Route::get('/redirect', [LoginController::class, 'google_callback']);

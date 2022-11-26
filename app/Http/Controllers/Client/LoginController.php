@@ -18,7 +18,7 @@ class LoginController extends Controller
     }
 
     public function login() {
-
+        dd('login'); 
     }
 
     // login with google  
@@ -27,15 +27,13 @@ class LoginController extends Controller
     }
     public function google_callback(Request $request) {
 
-        $user = Socialite::driver('google')->user();
-
-        dd($user); 
-
+        $user = Socialite::driver('facebook')->user();
         $data['provider'] = 'google';
         $data['provider_user_id'] = $user->id;
         $data['status'] = 0; 
         
         $account = User::userSocial($data);
+        
         if($account) {
             $request->session()->put('login_success','login_success'); 
             $request -> session() -> put('provider_user_id', $user->id);
@@ -116,7 +114,7 @@ class LoginController extends Controller
         User::change_password($user_id, $password); 
         $token['token'] = null; 
         User::update_token($user_id, $token);
-        return redirect() -> route('login.') -> with('change_password_success', 'Thay đổi mật khẩu thành công'); 
+        return redirect() -> route('login.index') -> with('change_password_success', 'Thay đổi mật khẩu thành công'); 
 
     }
 }
