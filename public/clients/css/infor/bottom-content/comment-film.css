@@ -172,12 +172,10 @@
     background-color: red ; 
 }
 
-.form-evaluate {
+.form-evaluate  {
     position: absolute; 
-    min-width: 500px; 
+    min-width: 525px; 
     min-height: 200px;
-    display: block;
-    visibility: visible;
     top: 40vh;
     transition: top 0.3s ease 0s;
     left: 40vw;
@@ -186,7 +184,15 @@
     box-shadow: 1px 1px 27px 1px rgb(193 193 193 / 75%);
     border-radius: 10px;
     padding: 10px; 
+    transition: 0.3s all;
 }
+.form-evaluate.un_active {
+    display: none;
+}
+.form-evaluate.active {
+    display: block;
+}
+
 .form-evaluate .head-evaluate{
     display: flex;
     color: #cac9c9;
@@ -195,7 +201,7 @@
     font-weight: bold;
 }
 .head-evaluate #exits {
-    background-color: red ; 
+    background-color: firebrick ; 
     
 }
 .head-evaluate #exits i {
@@ -209,6 +215,31 @@
 }
 .start i {
     font-size: 40px; 
-    color : yellow ; 
+    color : white ; 
+    margin: 0 3px;
 
 }
+.start i:hover {
+    cursor: pointer;
+    scale: 1.5; 
+}
+.start i.star-active {
+    color: yellow ;     
+}
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; 
+
+}
+.btn-submit button  {
+    display: inline-block;
+    padding: 5px 10px; 
+    background-color: green; 
+    border-radius: 5px;
+    color: #cac9c9; 
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+

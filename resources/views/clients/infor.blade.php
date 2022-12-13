@@ -16,12 +16,15 @@
 @endsection
 
 @section('content')
-    <div class="form-evaluate">
+    <form action="">
+    <div class="form-evaluate un_active" id="form_evaluate1">
         <div class="head-evaluate">
             <span>Đánh giá phim</span>
-            <button id="exits"><i class="ti-close"></i></button>
+            <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
         </div>
         <div class="start">
+            <i class="ti-star star-active" onclick="alert('test');"></i>
+            <i class="ti-star" id="rate-2"></i>
             <i class="ti-star"></i>
             <i class="ti-star"></i>
             <i class="ti-star"></i>
@@ -30,14 +33,9 @@
             <i class="ti-star"></i>
             <i class="ti-star"></i>
             <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-        </div>
-
-        <div class="btn-submit">
-            <a href="">Đánh giá</a>
         </div>
     </div>
+    </form>
     <div class="top_content">
         <div class="name_film">
             {{-- Put data here --}}
@@ -111,7 +109,7 @@
             @if(session('user_id'))
             <div class="comment_head border-none">
                 {{-- Put data here --}}
-               <button id="btn_evaluate">Đánh giá</button>
+               <button id="btn_evaluate" onclick="display_form_evaluate();">Đánh giá</button>
             </div>
 
             @endif
