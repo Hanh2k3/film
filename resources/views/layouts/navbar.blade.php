@@ -1,6 +1,8 @@
 
 <div class="logo">
-  <img src="https://animehay.club/themes/img/logo.png"  style="width:347px; height:65px;"alt="logo thuong hieu">
+    <a href="{{route('home.')}}" id="logo-home">
+        <img src="{{asset('uploads/logo/logo.png')}}"  style="width:347px; height:65px;"alt="logo thuong hieu">
+    </a>
 </div>
 <div class="search-bar">
     <form action="" class="">

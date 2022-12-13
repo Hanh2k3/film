@@ -234,3 +234,15 @@ a#hide_account{
 #hide_account i {
     color: red; 
 }
+
+a#logo-home {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    display: inline-flex;
+    background: none; 
+    border: none;
+    border-radius: none;
+    transition: none;
+}
