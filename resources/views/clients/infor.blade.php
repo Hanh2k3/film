@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('clients/css/infor/top-content/main-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/episode-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/comment-film.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/css/switalert.css') }}">
 @endsection
 
 @section('content')
@@ -23,7 +24,7 @@
             <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
         </div>
         <div class="start">
-            <i class="ti-star star-evaluate star-active" id="rate-1" data-id="1"></i>
+            <i class="ti-star star-evaluate" id="rate-1" data-id="1"></i>
             <i class="ti-star star-evaluate" id="rate-2" data-id="2"></i>
             <i class="ti-star star-evaluate" id="rate-3" data-id="3"></i>
             <i class="ti-star star-evaluate" id="rate-4" data-id="4"></i>
@@ -81,7 +82,10 @@
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
                            @foreach ($film as $item )
-                                {{ $item->description }}                               
+                                {{ $item->description }} 
+                                @php
+                                    $name_film = $item->film_name; 
+                                @endphp                              
                            @endforeach
                                     
                         </div>
@@ -136,7 +140,7 @@
                 </form>  
                 @else
                     <div class="login-comment">
-                        <a href="{{route('login.index')}}">Đăng nhập để bình luận</a>
+                        <a href="{{ route('login.index') }}">Đăng nhập để bình luận</a>
                     </div>
                 @endif
                
@@ -163,16 +167,26 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="{{ asset('clients/js/switalert.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    <script>    
+        var num_star = "{{ $num_star }}"; 
+        function add_start_active(a) {
+            for(var i=1; i<=a; i++) {
+                let star_id = "rate-" + i ; 
+                document.getElementById(star_id).classList.add("star-active"); 
+            }
+            
+        }
+        add_start_active(num_star); 
+        
         $(document).ready(function () {
             $('.star-evaluate').click(function () {  
                 event.preventDefault();
                 var t  = $(this).data('id');
-                var user_id = "{{session('user_id')}}"; 
-                var film_id = "{{$id}}"; 
-    
+                var user_id = "{{ session('user_id') }}"; 
+                var film_id = "{{ $id }}"; 
                 $.get(
                     "{{route('evaluate')}}", 
                     {
@@ -181,18 +195,20 @@
                         evaluate_value: t
                     }, 
                     function (data) {
-                        alert(data); 
-                     
-                        for(var i=1; i<=t; i++) {
-                            console.log(i); 
+                        for(var i=1; i<=10; i++) {
+                            let star_id = "rate-" + i ; 
+                            document.getElementById(star_id).classList.remove("star-active"); 
                         }
+                       
+                        for(var i=1; i<=data; i++) {
+                            let star_id = "rate-" + i ; 
+                            document.getElementById(star_id).classList.add("star-active"); 
+                        }
+                        swal("Thành công", "Bạn đã đánh giá {{ $name_film }} " + data +" " + ' sao' , "success");
+                        exits_form_evaluate(); 
                     }
                 ) 
-               
-                //swal("Good job!", "You clicked the button!", "success");
             }) 
-    
-           
         });
     </script>
 

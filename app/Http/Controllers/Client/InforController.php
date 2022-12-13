@@ -16,10 +16,9 @@ class InforController extends Controller
         $list_episodes = Episode::getListEpisodes($id); 
         $film = Film::getFilm($id); 
         
+        $num_star = Evaluate::get_evaluate(session('user_id'), $id) -> evaluate_value; 
 
-  
-        
-        return view('clients.infor', compact('id','list_episodes', 'film')); 
+        return view('clients.infor', compact('id','list_episodes', 'film', 'num_star')); 
     }
 
     // evaluate film 
@@ -34,13 +33,14 @@ class InforController extends Controller
           
     
             Evaluate::update_evaluation($data['user_id'], $data['film_id'], $data['evaluate_value']); 
-
+           
         } 
         else {
-            return '2';
+            
             Evaluate::add_evaluation($data);
         
         }
+        return $data['evaluate_value']; 
 
 
         

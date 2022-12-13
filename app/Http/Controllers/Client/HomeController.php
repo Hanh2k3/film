@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Episode; 
 use App\Models\Film;
 use App\Models\User;  
+use App\Models\Evaluate; 
 class HomeController extends Controller
 
 {
@@ -30,8 +31,10 @@ class HomeController extends Controller
         foreach ($film_new as $item) {
             $film_id = $item->film_id;  
             $list_film_new[$i] = sizeof(Episode::getListEpisodes($film_id)); 
+            $list_score = Evaluate::get_avg_evaluation($film_id);
             $i +=1; 
         }
+        dd($list_score); 
         return view('clients.home', compact('film', 'list_film', 'film_new', 'list_film_new')); 
     }
 
