@@ -49,7 +49,14 @@ Route::prefix('/') -> name('home.')-> group( function () {
 // InforFilm 
 Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
+
+   
+   
+
+    // comment film 
 }); 
+ // evaluate film 
+Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('evaluate');
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {

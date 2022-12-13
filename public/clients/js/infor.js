@@ -1,12 +1,7 @@
 document.querySelector(".detail_list table").style.display = "table";
 document.querySelector(".detail_list .content_film").style.display = "none";
-document.getElementById("detail_list").style.height 
-    = document.getElementById("poster_id").offsetHeight + "px";
 
-window.onresize = ()=> {
-    document.getElementById("detail_list").style.height 
-    = document.getElementById("poster_id").offsetHeight + "px";
-}
+
 
 const nameButtonContent = () => {
     return document.getElementById("btn_detail_film").innerHTML 
@@ -38,8 +33,11 @@ function display_form_evaluate() {
 }
 
 function exits_form_evaluate() {
-   
+    event.preventDefault();
     var form_evaluate = document.getElementById("form_evaluate1");
     form_evaluate.classList.remove("active");
     form_evaluate.classList.add("un_active");
 }
+
+
+

@@ -173,9 +173,9 @@
 }
 
 .form-evaluate  {
-    position: absolute; 
+    position: fixed; 
     min-width: 525px; 
-    min-height: 200px;
+    min-height: 150px;
     top: 40vh;
     transition: top 0.3s ease 0s;
     left: 40vw;

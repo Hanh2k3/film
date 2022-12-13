@@ -95,6 +95,7 @@
 }
 .detail_film .detail .detail_list {
     width: 100%;
+    height: 100%;
     padding: 10px 0;
     overflow-y: scroll;
     border: solid 1px var(--titleColor);

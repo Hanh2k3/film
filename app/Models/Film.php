@@ -18,7 +18,7 @@ class Film extends Model
     }
 
     static function getFilm($id) {
-        $film = DB::table('film') -> where('film_id', $id) -> first();
+        $film = DB::table('film') -> where('film_id', $id) -> get();
         return $film;
     }
     

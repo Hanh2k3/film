@@ -23,16 +23,16 @@
             <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
         </div>
         <div class="start">
-            <i class="ti-star star-active" onclick="alert('test');"></i>
-            <i class="ti-star" id="rate-2"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
-            <i class="ti-star"></i>
+            <i class="ti-star star-evaluate star-active" id="rate-1" data-id="1"></i>
+            <i class="ti-star star-evaluate" id="rate-2" data-id="2"></i>
+            <i class="ti-star star-evaluate" id="rate-3" data-id="3"></i>
+            <i class="ti-star star-evaluate" id="rate-4" data-id="4"></i>
+            <i class="ti-star star-evaluate" id="rate-5" data-id="5"></i>
+            <i class="ti-star star-evaluate" id="rate-6" data-id="6"></i>
+            <i class="ti-star star-evaluate" id="rate-7" data-id="7"></i>
+            <i class="ti-star star-evaluate" id="rate-8" data-id="8"></i>
+            <i class="ti-star star-evaluate" id="rate-9" data-id="9"></i>
+            <i class="ti-star star-evaluate" id="rate-10"  data-id="10"></i>
         </div>
     </div>
     </form>
@@ -44,7 +44,7 @@
         <div class="main_film">
             <div class="poster_film" id="poster_film">
                 <div class="poster" id="poster_id">
-                    <img src="{{$film->img}}" alt="">
+                    <img src="{{asset('uploads/img_film/test.jpg')}}" alt="">
                     <div>
                         <div class="button_box">
                             <a class="btn_watch" href="{{route('viewPage.', ['film_id' => $id, 'episode_id' => 1 ])}}">Xem phim</a>
@@ -80,8 +80,10 @@
                         </table>
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
-                            {{-- Put data here --}}
-                           <p>{{$film->description}}</p>
+                           @foreach ($film as $item )
+                                {{ $item->description }}                               
+                           @endforeach
+                                    
                         </div>
                     </div>
                 </div>
@@ -161,6 +163,39 @@
             </div>
         </div>
     </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.star-evaluate').click(function () {  
+                event.preventDefault();
+                var t  = $(this).data('id');
+                var user_id = "{{session('user_id')}}"; 
+                var film_id = "{{$id}}"; 
+    
+                $.get(
+                    "{{route('evaluate')}}", 
+                    {
+                        user_id : user_id,
+                        film_id : film_id,
+                        evaluate_value: t
+                    }, 
+                    function (data) {
+                        alert(data); 
+                     
+                        for(var i=1; i<=t; i++) {
+                            console.log(i); 
+                        }
+                    }
+                ) 
+               
+                //swal("Good job!", "You clicked the button!", "success");
+            }) 
+    
+           
+        });
+    </script>
+
 
     <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
     <script src="{{ asset('clients/js/infor.js') }}"></script>
