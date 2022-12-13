@@ -16,6 +16,26 @@
 @endsection
 
 @section('content')
+    <form action="">
+    <div class="form-evaluate un_active" id="form_evaluate1">
+        <div class="head-evaluate">
+            <span>Đánh giá phim</span>
+            <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
+        </div>
+        <div class="start">
+            <i class="ti-star star-active" onclick="alert('test');"></i>
+            <i class="ti-star" id="rate-2"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+            <i class="ti-star"></i>
+        </div>
+    </div>
+    </form>
     <div class="top_content">
         <div class="name_film">
             {{-- Put data here --}}
@@ -86,6 +106,14 @@
             </div>
         </div>
         <div class="comment_film">
+            @if(session('user_id'))
+            <div class="comment_head border-none">
+                {{-- Put data here --}}
+               <button id="btn_evaluate" onclick="display_form_evaluate();">Đánh giá</button>
+            </div>
+
+            @endif
+       
             <div class="comment_head">
                 {{-- Put data here --}}
                 <p class="comment_title">Bình luận ({{ '123' }})</p>
@@ -99,10 +127,17 @@
                 </div>
             </div>
             <div class="comment_container">
+                @if (session('user_id'))
                 <form action="{{ '#' }}">
                     <input type="text" name="your_comment" placeholder="Nhập bình luận">
                     <div><input type="submit" value="Bình luận"></div>
-                </form>
+                </form>  
+                @else
+                    <div class="login-comment">
+                        <a href="{{route('login.index')}}">Đăng nhập để bình luận</a>
+                    </div>
+                @endif
+               
                 <ul class="comment_list">
                     {{-- Put data here --}}
                     @foreach ($list_episodes as $comment)

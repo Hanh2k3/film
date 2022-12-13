@@ -31,3 +31,15 @@ const handleDetailFilm = () => {
         nameButtonContent();
     }
 }
+function display_form_evaluate() {
+    var form_evaluate = document.getElementById("form_evaluate1");
+    form_evaluate.classList.remove("un_active");
+    form_evaluate.classList.add("active");
+}
+
+function exits_form_evaluate() {
+   
+    var form_evaluate = document.getElementById("form_evaluate1");
+    form_evaluate.classList.remove("active");
+    form_evaluate.classList.add("un_active");
+}

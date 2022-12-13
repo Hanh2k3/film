@@ -17,8 +17,33 @@ class LoginController extends Controller
         return view('clients.login');
     }
 
-    public function login() {
+    public function login(Request $request) {
+        $request -> validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
 
+        ]
+        ,[
+            'email.required' => 'Vui lòng nhập địa chỉ email',
+            'password.required' => 'Vui lòng nhập mật khẩu',
+            'email.email' => 'Email không đúng định dạng'
+        ]);
+
+        $email = trim($request-> email);
+        $password = trim(MD5($request -> password)); 
+
+       
+        $user = User::check_user($email, $password);
+  
+        if($user) {
+            session() -> put('user_id', $user->user_id);
+            session() -> put('user_name', $user->user_name);
+            session() -> put('user_avatar', $user->avt);
+
+            return redirect() -> route('home.'); 
+        } else {
+            return back() -> with('erorr_login', 'Email hoặc mật khẩu không đúng'); 
+        }
     }
 
     // login with google  
@@ -27,36 +52,44 @@ class LoginController extends Controller
     }
     public function google_callback(Request $request) {
 
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google') ->stateless()->user();
+      
 
-        dd($user); 
-
-        $data['provider'] = 'google';
-        $data['provider_user_id'] = $user->id;
-        $data['status'] = 0; 
         
-        $account = User::userSocial($data);
-        if($account) {
-            $request->session()->put('login_success','login_success'); 
-            $request -> session() -> put('provider_user_id', $user->id);
-            $request->session()->put('provider', 'google');
-            return redirect() -> route('home.');
+        $email = User::check_google($user->email); 
 
+
+
+        if($email) {
+            if($email->provider) {
+                // google
+                session() -> put('user_id', $email->user_id);
+                session() -> put('user_name', $email->user_name);
+                session() -> put('user_avatar', $email->avt);
+
+                session() -> put('google', 'google'); 
+                return redirect() -> route('home.'); 
+            } else {
+                // normal 
+                return redirect() -> route('login.index') -> with('erorr_login', 'Email đã được sử dụng để tạo tài khoản');
+            }
         } else {
-            $data['name'] = $user->name;
-            $data['provider'] = 'google';
-            $data['provider_user_id'] = $user->id;
-            $data['email_social'] = $user->email;
+            // add new 
+            $data['user_name'] = $user -> name; 
+            $data['user_email'] = $user->email ; 
+            $data['avt'] = $user-> avatar;
+            $data['provider'] = 'google'; 
 
-            User::create_user_social($data); 
+            $id = User::insert_user_google($data);
+            session() -> put('user_id', $id);
+            session() -> put('user_name', $user->user_name);
+            session() -> put('user_avatar', $user->avatar);
 
-            $request->session()->put('login_success','login_success'); 
-            $request -> session() -> put('provider_user_id', $user->id);
-            $request->session()->put('provider', 'google');
-
-            return redirect() -> route('home.');
-
+            session() -> put('google', 'google'); 
+            return redirect() -> route('home.'); 
+            
         }
+
     }
 
     // forget password 
@@ -116,7 +149,14 @@ class LoginController extends Controller
         User::change_password($user_id, $password); 
         $token['token'] = null; 
         User::update_token($user_id, $token);
-        return redirect() -> route('login.') -> with('change_password_success', 'Thay đổi mật khẩu thành công'); 
+        return redirect() -> route('login.index') -> with('change_password_success', 'Thay đổi mật khẩu thành công'); 
 
+    }
+
+
+    // logout 
+    public function logout() {
+        session() -> flush();
+        return back(); 
     }
 }

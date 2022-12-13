@@ -43,18 +43,33 @@
              session() -> put('change_password_success', null); 
          @endphp
 
-      @endif  
+        @endif  
+
+        @if (session('erorr_login'))
+        <div class="alert alert-danger">{{session('erorr_login')}}</div>
+        @php
+            session() -> put('erorr_login', null); 
+        @endphp
+
+        @endif   
         
        </div>
-       <form action="">
+       <form action="{{route('login.check_login')}}" method="POST">
+            @csrf 
             <div class="item">
                 <label for="">Email</label>
                 <input type="text" name="email" id="" placeholder="Nhập email của bạn">
+                @error('email')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="item">
                 <label for="">Mật khẩu</label>
                 <input type="password" name="password" id="" placeholder="Nhập mật khẩu của bạn">
+                @error('password')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
             </div>
             <div class="button">
                 <div class="btn-login">

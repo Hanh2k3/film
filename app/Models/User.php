@@ -46,11 +46,21 @@ class User extends Authenticatable
     static function insert_user($data) {
         DB::table('users')->insert($data);
     }
+
+    static function insert_user_google($data) {
+        $id = DB::table('users')->insertGetId($data);
+        return $id; 
+    }
     // get user by email 
     static function get_user_by_email($email) {
         $email = DB::table('users')-> select('user_email', 'user_name', 'user_id') -> where('user_email', $email) -> first();
         return $email ; 
 
+    }
+
+    static function check_user($email, $password) {
+        $user = DB::table('users') -> where('user_email', $email) -> where('password', $password) -> first();
+        return $user ;
     }
 
 
@@ -69,5 +79,10 @@ class User extends Authenticatable
     // change password 
     static function change_password($user_id, $password) {
         DB::table('users') -> where('user_id', $user_id) -> update(['password' => $password]);
+    }
+
+    static function check_google($user_email) {
+        $user = DB::table('users')->where('user_email', $user_email) -> first();
+        return $user; 
     }
 }
