@@ -7,7 +7,7 @@
             <th>STT</th>
             <th>Mã danh mục</th>
             <th>Tên danh mục</th>
-            <th>Hoạt động</th>
+            <th>Hành động</th>
         </thead>
         <tbody>
             @php
@@ -21,8 +21,12 @@
                 <td>{{ $value->category_id }}</td>
                 <td>{{ $value->category_name }}</td>
                 <td>
-                    <a href="#" class="btn btn-warning">Sửa</a>
-                    <a href="#" class="btn btn-danger">Xóa</a>
+                    <a href="{{route('admincategory.edit', $value->category_id)}}" class="btn btn-warning">Sửa</a>
+                    <form class="d-inline-block" action="{{route('admincategory.destroy', $value->category_id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Xoá" class="btn btn-danger">
+                   </form>
                 </td>
             </tr>
             @endforeach

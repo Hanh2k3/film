@@ -36,7 +36,7 @@
             </div>
 
             <div class="content_film">
-                <iframe src="https://www.dailymotion.com/embed/video/x8c0gv2?autoplay=1" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                <iframe src="{{$item->episode_link}}" style="width: 100%; height: 100%;" frameborder="0"></iframe>
 
             </div>
 

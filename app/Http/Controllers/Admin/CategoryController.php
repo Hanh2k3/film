@@ -69,7 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = DB::table('categories')->where('category_id', $id)->first();
+        return view('admin.categories.editcategory', ['category' => $category]);
     }
 
     /**
@@ -81,7 +82,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $params = [
+            'category_name' => $request->categoryname
+        ];
+        DB::table('categories')->where('category_id', $id)->update($params);
+        return redirect()->route('admincategory.index');
     }
 
     /**
@@ -92,6 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('categories')->where('category_id', $id)->delete();
+        return redirect()->route('admincategory.index');
     }
 }

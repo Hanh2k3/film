@@ -92,21 +92,7 @@
             <div data-i18n="Without navbar">Danh sách danh mục</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="layouts-container.html" class="menu-link">
-            <div data-i18n="Container">Container</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="layouts-fluid.html" class="menu-link">
-            <div data-i18n="Fluid">Fluid</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="layouts-blank.html" class="menu-link">
-            <div data-i18n="Blank">Blank</div>
-          </a>
-        </li>
+        
       </ul>
     </li>
 
@@ -123,8 +109,8 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="pages-account-settings-notifications.html" class="menu-link">
-            <div data-i18n="Notifications">Notifications</div>
+          <a href="{{route('adminfilm.index')}}" class="menu-link">
+            <div data-i18n="Notifications">Danh sách phim</div>
           </a>
         </li>
         <li class="menu-item">

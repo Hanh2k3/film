@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -14,7 +15,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        //
+        $films = DB::table('film')->get();
+        return view('admin.films.listfilm', ['films' => $films]);
     }
 
     /**
@@ -24,7 +26,11 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return view('admin.films.addfilm');
+        $category_film = DB::table('film')->join('film_category', 'film_category.film_id', '=', 'film.film_id')
+                                          ->join('categories', 'film_category.category_id', '=', 'categories.category_id')
+                                          ->select('categories.category_name')
+                                          ->get();
+        return view('admin.films.addfilm', ['category_film' => $category_film]);
     }
 
     /**
@@ -35,7 +41,18 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $des = 'public/uploads/avatar_film';
+        $imgname = $request->file('img')->getClientOriginalName();
+        $params = [
+            'film_name' => $request->film_name,
+            'description' => $request->description,
+            'img' => $imgname,
+            'episodes_quantity' => $request->episodes_quantity,
+            'release_date' => $request->release_date
+        ];
+        DB::table('film')->insert($params);
+        $request->file('img')->move($des, $imgname);
+        return redirect()->route('adminfilm.index');
     }
 
     /**
@@ -44,9 +61,9 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
     }
 
     /**
