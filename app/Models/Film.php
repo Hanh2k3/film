@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Film extends Model
 {
     use HasFactory;
+    public $table = 'film';
     static function getListFilm($category_id) { // get film by category 
         $listFilm = DB::table('film')
                     -> join('film_category', 'film.film_id', '=', 'film_category.film_id')
