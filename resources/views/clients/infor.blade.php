@@ -55,16 +55,16 @@
                 </div>
                 <div class="rate" style="color: white">
                     {{-- Put data here --}}
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star" id="score-1"></i>
+                    <i class="fa-regular fa-star" id="score-2"></i>
+                    <i class="fa-regular fa-star" id="score-3"></i>
+                    <i class="fa-regular fa-star" id="score-4"></i>
+                    <i class="fa-regular fa-star" id="score-5"></i>
+                    <i class="fa-regular fa-star" id="score-6"></i>
+                    <i class="fa-regular fa-star" id="score-7"></i>
+                    <i class="fa-regular fa-star" id="score-8"></i>
+                    <i class="fa-regular fa-star" id="score-9"></i>
+                    <i class="fa-regular fa-star" id="score-10"></i>
                 </div>
             </div>
             <div class="detail_film">
@@ -180,6 +180,17 @@
             
         }
         add_start_active(num_star); 
+        // score 
+        var score = "{{ $score }}";
+        function display_score(a) {
+            a = Math.round(a); 
+            for(var i=1; i<=a; i++) {
+                let star_id = "score-" + i ;
+                document.getElementById(star_id).classList.remove("fa-regular"); 
+                document.getElementById(star_id).classList.add("fa-solid"); 
+            }
+        }
+        display_score(score); 
         
         $(document).ready(function () {
             $('.star-evaluate').click(function () {  

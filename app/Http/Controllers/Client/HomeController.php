@@ -34,8 +34,8 @@ class HomeController extends Controller
             $list_score = Evaluate::get_avg_evaluation($film_id);
             $i +=1; 
         }
-        dd($list_score); 
-        return view('clients.home', compact('film', 'list_film', 'film_new', 'list_film_new')); 
+
+        return view('clients.home', compact('film', 'list_film', 'film_new', 'list_film_new', 'list_score')); 
     }
 
 

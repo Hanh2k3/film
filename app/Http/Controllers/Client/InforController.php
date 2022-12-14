@@ -16,9 +16,16 @@ class InforController extends Controller
         $list_episodes = Episode::getListEpisodes($id); 
         $film = Film::getFilm($id); 
         
-        $num_star = Evaluate::get_evaluate(session('user_id'), $id) -> evaluate_value; 
+        $check = Evaluate::check_evaluation(session('user_id'), $id); 
 
-        return view('clients.infor', compact('id','list_episodes', 'film', 'num_star')); 
+        // star of user evaluate 
+        if($check) {
+            $num_star = Evaluate::get_evaluate(session('user_id'), $id) -> evaluate_value; 
+        } else {
+            $num_star = 0 ; 
+        }
+        $score = $request->score;
+        return view('clients.infor', compact('id','list_episodes', 'film', 'num_star', 'score')); 
     }
 
     // evaluate film 

@@ -33,8 +33,14 @@ class Evaluate extends Model
 
     // get average of valuation film 
     static function get_avg_evaluation($film_id) {
-        $value = DB::table('evaluate_film') -> where('film_id', $film_id) -> select("avg('evaluate_value')") -> get(); 
+        $value = DB::select('select avg(evaluate_value) as score  from evaluate_film where film_id = ?', [$film_id]);
         return $value;
+    }
+
+    // check film evaluated 
+    static function check_film($film_id) {
+        $film = DB::table('evaluate_film') -> where('film_id', $film_id) -> first();
+        return $film ; 
     }
 
     

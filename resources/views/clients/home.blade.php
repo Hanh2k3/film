@@ -56,19 +56,23 @@
     </div>
    
     <div class="movies-list margin-20">
+      
         
 
         @foreach ($film_new as $item )
+        @php
+            $score = number_format($list_score[$i] -> score, 1) ; 
+        @endphp
         <div class="movie-item">
-            <a href="{{route('infor.view', ['id' => $item->film_id])}}">
+            <a href="{{ route('infor.view', ['id' => $item->film_id]). '?score='. $score }}">
                 <div class="episode-latest">{{$list_film_new[$i]}}/{{$item->episodes_quantity}}</div>
                 <div>
-                    <img src="{{$item->img}}" alt="">
+                    <img src="{{ $item->img }}" alt="">
                 </div>
 
-                <div class="score">9.2</div>
+                <div class="score">{{ $score}}</div>
 
-                <div class="name-movie">{{$item->film_name}}</div>
+                <div class="name-movie">{{ $item->film_name }}</div>
             </a>
         </div>
         @php 
