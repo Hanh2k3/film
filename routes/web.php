@@ -95,5 +95,5 @@ Route::prefix('/forget-password') -> name('forget_password.') -> group( function
     Route::post('/save-change_password', [LoginController::class, 'change_password']) -> name('change_password');
 });
 
-Route::get('/test', [TestController::class, 'test_send_mail']);
+Route::get('/test', [TestController::class, 'test_icon']);
 

@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/episode-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/comment-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/switalert.css') }}">
+
 @endsection
 
 @section('content')
-    <form action="">
+     <form action="">
     <div class="form-evaluate un_active" id="form_evaluate1">
         <div class="head-evaluate">
             <span>Đánh giá phim</span>
@@ -40,7 +41,7 @@
     <div class="top_content">
         <div class="name_film">
             {{-- Put data here --}}
-            <p><i class="ti-video-clapper"> </i> Thôn Phệ Tinh Không</p>
+           <p><i class="ti-video-clapper"> </i> Thôn Phệ Tinh Không</p>
         </div>
         <div class="main_film">
             <div class="poster_film" id="poster_film">
@@ -82,7 +83,7 @@
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
                            @foreach ($film as $item )
-                                {{ $item->description }} 
+                                {{$item-> description}}
                                 @php
                                     $name_film = $item->film_name; 
                                 @endphp                              
@@ -120,24 +121,28 @@
 
             @endif
        
-            <div class="comment_head">
+         <div class="comment_head">
                 {{-- Put data here --}}
-                <p class="comment_title">Bình luận ({{ '123' }})</p>
+              <p class="comment_title">Bình luận ({{ '123' }})</p>
                 <div class="comment_nav">
                     {{-- Put data here --}}
-                    <select name="" id="">
+                <select name="" id="">
                         <option value=""><a href="#">Mặc định</a></option>
                         <option value=""><a href="#">Mới nhất</a></option>
                         <option value=""><a href="#">Cũ nhất</a></option>
-                    </select>
+                </select>
                 </div>
-            </div>
+            </div>  
             <div class="comment_container">
                 @if (session('user_id'))
                 <form action="{{ '#' }}">
-                    <input type="text" name="your_comment" placeholder="Nhập bình luận">
-                    <div><input type="submit" value="Bình luận"></div>
-                </form>  
+                    @csrf
+                    <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                    <div class="div_comment">
+                        <i class="first-btn ti-comments-smiley"></i>
+                        <input type="submit" value="Bình luận" id="btn_cmt">
+                    </div>
+                </form>
                 @else
                     <div class="login-comment">
                         <a href="{{ route('login.index') }}">Đăng nhập để bình luận</a>
@@ -149,13 +154,17 @@
                     @foreach ($list_episodes as $comment)
                         <li>
                             <div class="c_comment_head">
-                                <a href="#">AVT</a>
+                                <a href="#"><img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/312806537_658556435769267_2568947083291964863_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=BceEm5ZU8zkAX_SgCHb&_nc_ht=scontent.fdad1-3.fna&oh=00_AfCvrLJUWkIg6gm29_1IuvmlwWHoo-dxWtrPiayn-AdI3g&oe=639EA5F1" alt=""></a>
                             </div>
                             <div>
                                 <div class="c_comment_body">
                                     <a class="c_comment_user" href="#">{{ 'Name of User' }}</a>
                                     <p class="c_comment_content">{{ 'This is a test comment' }}</p>
-                                    <p class="c_comment_time">{{ 'comment time' }}</p>
+                                    <div>
+                                        <p><a href="">Trả lời</a></p>
+                                        <p class="c_comment_time">{{ 'comment time' }}</p>
+                                    </div>
+                                  
                                 </div>
                                 <div class="c_comment_tail">
                                     {{-- Continue --}}
@@ -164,11 +173,31 @@
                         </li>
                     @endforeach
                 </ul>
+                <div class="bt_load_cm">
+                    <a href="#" class="fw-600">Tải thêm bình luận</a>
+                </div>
             </div>
         </div>
     </div>
 
+    
+    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
     <script src="{{ asset('clients/js/switalert.js') }}"></script>
+    <script>
+
+        new EmojiPicker({
+            trigger: [
+                {
+                    selector: '.',
+                    insertInto: ['.cmt_1'] // '.selector' can be used without array
+                },
+               
+            ],
+            closeButton: true,
+            //specialButtons: green
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>    
         var num_star = "{{ $num_star }}"; 
@@ -191,8 +220,39 @@
             }
         }
         display_score(score); 
+
+        // display icon comment boxes 
+       
+
         
-        $(document).ready(function () {
+      $(document).ready(function () {
+            $('#btn_cmt').click(function () {
+                event.preventDefault();
+                let comment = document.getElementById('comment').value;
+                
+                if (comment.length == 0) {
+                    alert('Vui lòng nhập bình luận'); 
+                    return ; 
+                }
+
+                var _token = $('input[name=_token]').val(); 
+                alert(_token); 
+
+                {{--  $.post(
+                    '{{route('')}}',
+                    {
+                        value_filter: value_filter,
+                        _token: _token
+                    },
+                    function(data) {
+                         $('#list_books').html(data); 
+                    }
+                )    --}}
+
+       
+                
+            })
+          
             $('.star-evaluate').click(function () {  
                 event.preventDefault();
                 var t  = $(this).data('id');
@@ -220,10 +280,30 @@
                     }
                 ) 
             }) 
-        });
+        });  
     </script>
 
 
+    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
+    <script>
+        new EmojiPicker({
+            trigger: [
+                {
+                    selector: '.first-btn',
+                    insertInto: ['#comment'] // '.selector' can be used without array
+                },
+                {
+                    selector: '.second-btn',
+                    insertInto: '.two'
+                }
+            ],
+            closeButton: true,
+            //specialButtons: green
+        });
+
+      
+    </script>
     <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
     <script src="{{ asset('clients/js/infor.js') }}"></script>
 @endsection
+

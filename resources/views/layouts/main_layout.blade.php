@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset('clients/css/layouts.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="{{asset('clients/themify-icons-font/themify-icons/themify-icons.css')}}">
     @yield('link')
 </head>
@@ -31,6 +33,7 @@
         </div>
         
     </div>
+
 
     <script src="{{asset('clients/js/layout.js')}}"></script>
 </body>

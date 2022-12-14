@@ -48,8 +48,8 @@ class InforController extends Controller
         
         }
         return $data['evaluate_value']; 
-
-
-        
     }
+
+    // comment 
+    
 }

@@ -15,6 +15,7 @@ class ViewFilmController extends Controller
         $list_episodes = Episode::getListEpisodes($film_id); 
         $item = Episode::getEpisode($film_id, $episode);
         $episodes_qty = sizeof( $list_episodes);
+      
         
         if($episode > $episodes_qty) {
             return back(); 
