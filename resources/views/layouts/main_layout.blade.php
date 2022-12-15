@@ -32,6 +32,9 @@
         
     </div>
 
+    <script src="{{asset('clients/js/jquery.js')}}"></script>
     <script src="{{asset('clients/js/layout.js')}}"></script>
+    <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
+    @yield('script-tag')
 </body>
 </html>

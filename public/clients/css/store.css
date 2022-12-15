@@ -1,0 +1,128 @@
+.main-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.p-store-title {
+    display: flex;
+    width: 100%;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: solid 1px var(--titleColor);
+    border-radius: 5px;
+    font-weight: bolder;
+}
+.p-store-title div {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+.p-store-title p, .p-store-title i {
+    color: var(--titleColor);
+    font-size: 18px;
+    margin: 0;
+}
+.p-store-title i {
+    font-size: 24px;
+    margin-right: 6px;
+}
+
+.p-store-container {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    background-color: var(--themeBackgroundColor);
+    padding: 20px;
+    border-radius: 5px;
+    border: solid 1px var(--titleColor);
+}
+.store-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #404040;
+}
+.store-film {
+    position: relative;
+    border: solid 1px rgb(120, 120, 120);
+    width: 160px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 5px 5px 0 5px;
+    margin: 3px;
+}
+.store-film-img {
+    width: 100%;
+    height: 210px;
+}
+.store-film-img img {
+    width: 100%;
+    height: 100%;
+}
+.store-film-name {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.store-film-name p {
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: var(--fontSize);
+    font-weight: 500;
+    
+}
+.store-film-name:hover p{
+    color: var(--titleColor);
+}
+.store-film-name div {
+    position: absolute;
+    top: -20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 102, 255, 0.566);
+    display: none;
+}
+.store-film-name:hover div {
+    display: block;
+}
+.store-film-name button {
+    display: none;
+}
+
+.store-film-delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: solid 2px black;
+}
+.store-film-delete button {
+    display: block;
+    text-decoration: none;
+    background-color: rgb(216, 0, 0);
+    padding: 2px 5px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: bolder;
+    text-shadow: 0 0 1px black;
+}
+.store-film-delete:hover button {
+    background-color: rgb(181, 1, 1);
+}

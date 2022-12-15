@@ -9,7 +9,11 @@ use App\Http\Controllers\Client\ViewFilmController;
 use App\Http\Controllers\Client\LoginController; 
 use App\Http\Controllers\Client\RegisterController; 
 use App\Http\Controllers\Client\InforController;
-use App\Http\Controllers\TestController; 
+use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\Client\StoreController;
+use App\Http\Controllers\TestController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,12 +53,28 @@ Route::prefix('/') -> name('home.')-> group( function () {
 // InforFilm 
 Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
-}); 
+    Route::delete('/unfollowFilm/{film_id}', [InforController::class, 'unfollowFilm']) -> name('unfollow');
+});
+
+// Film Store
+Route::prefix('/store') -> name('store.') -> group( function() {
+    Route::get('/', [StoreController::class, 'index'])->name('index');
+    Route::post('/', [StoreController::class, 'insert'])->name('insert');
+    Route::delete('/delete/{film_id}', [StoreController::class, 'delete'])->name('delete');
+});
+
+//Profile
+Route::prefix('/profile')->name('profile.')->group( function() {
+    Route::get('/', [ProfileController::class, 'index'])->name('index');
+    Route::post('/update-avatar', [ProfileController::class, 'updateAvatar'])->name('update_avatar');
+    Route::post('/update-user', [ProfileController::class, 'updateUser'])->name('update_user');
+});
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
     Route::get('/{film_id}/{episode_id}', [ViewFilmController::class, 'index']) ;
 });
+
 
 // login user 
 Route::prefix('/login') -> name('login.') -> group( function () {
@@ -90,3 +110,7 @@ Route::prefix('/forget-password') -> name('forget_password.') -> group( function
 
 Route::get('/test', [TestController::class, 'test_send_mail']);
 
+
+// Route::get('/user', function () {
+//     echo session('user_id');
+// });
