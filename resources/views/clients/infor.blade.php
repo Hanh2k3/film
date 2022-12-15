@@ -5,7 +5,14 @@
 
 {{-- Put data here --}}
 @section('title')
-    {{ 'Tên film' }}
+@foreach ($film as $item )
+@php
+    $name_film = $item->film_name; 
+    $description = $item->description;
+@endphp   
+
+@endforeach
+    {{ $name_film = $item->film_name }}
 @endsection
 
 @section('link')
@@ -18,11 +25,12 @@
 @endsection
 
 @section('content')
+
      <form action="">
     <div class="form-evaluate un_active" id="form_evaluate1">
         <div class="head-evaluate">
             <span>Đánh giá phim</span>
-            <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
+            <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"> </i> </button>
         </div>
         <div class="start">
             <i class="ti-star star-evaluate" id="rate-1" data-id="1"></i>
@@ -41,7 +49,7 @@
     <div class="top_content">
         <div class="name_film">
             {{-- Put data here --}}
-           <p><i class="ti-video-clapper"> </i> Thôn Phệ Tinh Không</p>
+           <p><i class="ti-video-clapper"> </i> {{ $name_film }}</p>
         </div>
         <div class="main_film">
             <div class="poster_film" id="poster_film">
@@ -82,12 +90,7 @@
                         </table>
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
-                           @foreach ($film as $item )
-                                {{$item-> description}}
-                                @php
-                                    $name_film = $item->film_name; 
-                                @endphp                              
-                           @endforeach
+                            {{ $description }}
                                     
                         </div>
                     </div>
@@ -135,8 +138,8 @@
             </div>  
             <div class="comment_container">
                 @if (session('user_id'))
-                <form action="{{ '#' }}">
-                    @csrf
+                <form action="#" method="GET">
+            
                     <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
                     <div class="div_comment">
                         <i class="first-btn ti-comments-smiley"></i>
@@ -151,25 +154,70 @@
                
                 <ul class="comment_list">
                     {{-- Put data here --}}
-                    @foreach ($list_episodes as $comment)
+                    @foreach ($list_cmt as $comment)
                         <li>
-                            <div class="c_comment_head">
-                                <a href="#"><img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/312806537_658556435769267_2568947083291964863_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=BceEm5ZU8zkAX_SgCHb&_nc_ht=scontent.fdad1-3.fna&oh=00_AfCvrLJUWkIg6gm29_1IuvmlwWHoo-dxWtrPiayn-AdI3g&oe=639EA5F1" alt=""></a>
-                            </div>
-                            <div>
-                                <div class="c_comment_body">
-                                    <a class="c_comment_user" href="#">{{ 'Name of User' }}</a>
-                                    <p class="c_comment_content">{{ 'This is a test comment' }}</p>
-                                    <div>
-                                        <p><a href="">Trả lời</a></p>
-                                        <p class="c_comment_time">{{ 'comment time' }}</p>
+                            <div class="parent_comment">
+                                <div class="c_comment_head">
+
+                                    <a href="#">
+                                        @if ($comment->provider)
+                                            <img src="{{ $comment->avt }}" alt="">
+                                        @else
+                                            <img src="{{ asset("uploads/avatar/$comment->avt") }}" alt="Images avatar of user">
+                                        @endif
+                                       
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="c_comment_body">
+                                        <a class="c_comment_user" href="#">{{ $comment->user_name }}</a>
+                                        <p class="c_comment_content">{{ $comment-> comment_content }}</p>
+                                        <div>
+                                            <p><a href="">Trả lời</a></p>
+                                            <p class="c_comment_time">{{ $comment-> created_at }}</p>
+                                        </div>
+                                    
                                     </div>
-                                  
-                                </div>
-                                <div class="c_comment_tail">
-                                    {{-- Continue --}}
+                               
                                 </div>
                             </div>
+
+                            @if ($comment->sub_cmt)
+                                @foreach ($comment->sub_cmt as $sub)
+                                    <div class="div_b">
+                                        <div class="sub_cmt">
+                                            <div class="c_comment_head">
+                                                <a href="#">
+                                                    @if ($sub->provider)
+                                                        <img src="{{ $sub->avt }}" alt="">
+                                                    @else
+                                                        <img src="{{ asset("uploads/avatar/$sub->avt") }}" alt="Images avatar of user">
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <div class="c_comment_body">
+                                                    <a class="c_comment_user" href="#">{{ $sub-> user_name }}</a>
+                                                    <p class="c_comment_content">{{$sub-> comment_content }}</p>
+                                                    <div>
+                                                        <p class="c_comment_time">{{ $sub->created_at }}</p>
+                                                    </div>
+                                                
+                                                </div>
+                                             
+                                            </div>
+                                        </div>
+                                    </div>  
+                                @endforeach                              
+                            @endif
+                          <form action="#" method="GET">
+            
+                                <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                                <div class="div_comment">
+                                    <i class="first-btn ti-comments-smiley"></i>
+                                    <input type="submit" value="Bình luận" id="btn_cmt">
+                                </div>
+                            </form>  
                         </li>
                     @endforeach
                 </ul>
@@ -181,23 +229,8 @@
     </div>
 
     
-    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
+
     <script src="{{ asset('clients/js/switalert.js') }}"></script>
-    <script>
-
-        new EmojiPicker({
-            trigger: [
-                {
-                    selector: '.',
-                    insertInto: ['.cmt_1'] // '.selector' can be used without array
-                },
-               
-            ],
-            closeButton: true,
-            //specialButtons: green
-        });
-    </script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>    
         var num_star = "{{ $num_star }}"; 
@@ -226,32 +259,29 @@
 
         
       $(document).ready(function () {
-            $('#btn_cmt').click(function () {
+           $('#btn_cmt').click(function () {
                 event.preventDefault();
                 let comment = document.getElementById('comment').value;
+                
                 
                 if (comment.length == 0) {
                     alert('Vui lòng nhập bình luận'); 
                     return ; 
                 }
-
-                var _token = $('input[name=_token]').val(); 
-                alert(_token); 
-
-                {{--  $.post(
-                    '{{route('')}}',
+                var _token = $('input[name=_token]').val();   
+                var film_id =    "{{ $id }}"; 
+                $.get(
+                    '{{route('save_comment')}}',
                     {
-                        value_filter: value_filter,
-                        _token: _token
+                        comment: comment,
+                        film_id: film_id                      
                     },
                     function(data) {
-                         $('#list_books').html(data); 
+                        $('#comment').val('');  
+                        $('.comment_list').html(data); 
                     }
-                )    --}}
-
-       
-                
-            })
+                )      
+            })  
           
             $('.star-evaluate').click(function () {  
                 event.preventDefault();
@@ -275,14 +305,13 @@
                             let star_id = "rate-" + i ; 
                             document.getElementById(star_id).classList.add("star-active"); 
                         }
-                        swal("Thành công", "Bạn đã đánh giá {{ $name_film }} " + data +" " + ' sao' , "success");
+                        swal("Thành công", "Bạn đã đánh giá   {{ $name_film }} " + data +" " + ' sao' , "success");
                         exits_form_evaluate(); 
                     }
                 ) 
             }) 
         });  
     </script>
-
 
     <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
     <script>
@@ -299,9 +328,7 @@
             ],
             closeButton: true,
             //specialButtons: green
-        });
-
-      
+        });   
     </script>
     <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
     <script src="{{ asset('clients/js/infor.js') }}"></script>

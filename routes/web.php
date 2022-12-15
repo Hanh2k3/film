@@ -50,13 +50,12 @@ Route::prefix('/') -> name('home.')-> group( function () {
 Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
 
-   
-   
-
+    
     // comment film 
 }); 
  // evaluate film 
 Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('evaluate');
+Route::get('/comment', [InforController::class, 'save_comment']) -> name('save_comment'); 
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {

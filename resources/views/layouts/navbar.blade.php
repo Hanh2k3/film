@@ -30,9 +30,9 @@
     <div class="avatar">
 
         @if (session('google'))
-            <img src="{{$user_avatar}}" alt="Images avatar of user">
+            <img src="{{ $user_avatar }}" alt="Images avatar of user">
         @else 
-            <img src="{{asset("uploads/avatar/$user_avatar")}}" alt="Images avatar of user">
+            <img src="{{ asset("uploads/avatar/$user_avatar") }}" alt="Images avatar of user">
         @endif
         <div>{{$user_name}}</div>
     </div>
