@@ -21,11 +21,11 @@
                 <td>{{ $value->category_id }}</td>
                 <td>{{ $value->category_name }}</td>
                 <td>
-                    <a href="{{route('admincategory.edit', $value->category_id)}}" class="btn btn-warning">Sửa</a>
+                    <a href="{{route('admincategory.edit', $value->category_id)}}" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>
                     <form class="d-inline-block" action="{{route('admincategory.destroy', $value->category_id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Xoá" class="btn btn-danger">
+                        <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
                    </form>
                 </td>
             </tr>
