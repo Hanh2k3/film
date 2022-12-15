@@ -7,8 +7,8 @@
             {{-- <th>STT</th> --}}
             <th>Mã phim</th>
             <th>Tên phim</th>
-            <th>Mô tả</th>
-            <th>Ảnh</th>
+            <th style="width: 200px;">Mô tả</th>
+            <th style="width: 200px;">Ảnh</th>
             <th>Thời lượng</th>
             <th>Ngày phát sóng</th>
             <th>Hành động</th>
@@ -22,15 +22,17 @@
                 {{-- <td>
                     {{ $i+=1 }}
                 </td> --}}
-                <td>{{$value->film_id}}</td>
+                <td style="text-align: center">{{$value->film_id}}</td>
                 <td>{{$value->film_name}}</td>
                 <td>{{$value->description}}</td>
-                <td>1111</td>
-                <td>{{$value->episodes_quantity}}</td>
+                <td>
+                    <img src="{{asset('uploads/avatar_film/' . $value->img)}}" style="width: 60%;">
+                </td>
+                <td style="text-align: center">{{$value->episodes_quantity}}</td>
                 <td>{{$value->release_date}}</td>
                 <td>
-                    <a href="" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
-                    <form class="d-inline-block" action="" method="post">
+                    <a href="{{route('adminfilm.edit', $value->film_id)}}" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                    <form class="d-inline-block" enctype="multipart/form-data" action="{{route('adminfilm.destroy', $value->film_id)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"><i class="ti-trash"></i></button>

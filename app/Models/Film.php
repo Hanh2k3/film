@@ -9,6 +9,7 @@ class Film extends Model
 {
     use HasFactory;
     public $table = 'film';
+    public $primaryKey = 'film_id';
     static function getListFilm($category_id) { // get film by category 
         $listFilm = DB::table('film')
                     -> join('film_category', 'film.film_id', '=', 'film_category.film_id')
@@ -20,6 +21,11 @@ class Film extends Model
 
     static function getFilm($id) {
         $film = DB::table('film') -> where('film_id', $id) -> first();
+        return $film;
+    }
+
+    static function getFilmbyName($film_name) {
+        $film = DB::table('film') -> where('film_name', $film_name) -> first();
         return $film;
     }
     

@@ -4,7 +4,7 @@
     <h1>THÊM PHIM MỚI</h1>
     <form action="{{route('adminfilm.store')}}" method="post" enctype="multipart/form-data">
         @csrf
-        {{-- <div class="form-group col-4 mb-3">
+        <div class="form-group col-4 mb-3">
             <label for="category_film">Danh mục phim:</label>
             <select name="category_film" class="form-control">
                 @foreach ($category_film as $danhmuc)
@@ -13,7 +13,7 @@
                     </option>
                 @endforeach
             </select>
-        </div> --}}
+        </div>
         <div class="form-group col-4 mb-3">
             <label for="film_name">Tên phim:</label>
             <input type="text" name="film_name" class="form-control" placeholder="Nhập tên phim">
