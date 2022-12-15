@@ -89,7 +89,7 @@
                     <div class="comment_container" style="width: 100%;">
                         @if (session('user_id'))
                         <form action="{{ '#' }}">
-                            <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                            <textarea name="comment" id="comment" class="comment_a" cols="10" rows="5"></textarea>
                             <div class="div_comment">
                                 <i class="first-btn ti-comments-smiley"></i>
                                 <input type="submit" value="Bình luận" id="btn_cmt">

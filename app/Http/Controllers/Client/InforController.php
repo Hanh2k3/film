@@ -71,9 +71,19 @@ class InforController extends Controller
         $comment_content = $request-> comment; 
         $data['comment_content'] =   $comment_content;         
         $data['user_id'] = session('user_id'); 
-        $data['film_id'] = $request-> film_id;
+        
 
-        $comment_id = Film_cmt::add_comment($data); 
+        if($request -> answer) {
+            // answer comment 
+            $data['comment_id'] = $request -> comment_id;
+            Sub_film_cmt::add_sub_comment($data); 
+        } else {
+            $data['film_id'] = $request-> film_id;
+            $comment_id = Film_cmt::add_comment($data); 
+        }
+        $data['film_id'] = $request-> film_id;
+       
+       
 
         $list_cmt = Film_cmt::get_cmt($data['film_id']);
         
@@ -88,6 +98,7 @@ class InforController extends Controller
             }
         }
         $result = ''; 
+        $select = ''; 
 
         foreach ($list_cmt as $comment) {
            if($comment->provider) {
@@ -110,12 +121,10 @@ class InforController extends Controller
                    <a class="c_comment_user" href="#">'. $comment->user_name .'</a>
                    <p class="c_comment_content">'. $comment-> comment_content .'</p>
                    <div>
-                       <p><a href="">Trả lời</a></p>
+                       <p><a class="answer" data-id="'. $comment-> comment_id.'" onclick="test1();">Trả lời</a></p>
                        <p class="c_comment_time">'. $comment-> created_at .'</p>
                    </div>
-               
                </div>
-          
             </div>
             </div>'; 
 
@@ -150,21 +159,38 @@ class InforController extends Controller
                 }
 
            }
-           $result .= '<form action="#" method="GET">
+           $result .= '<form action="#" method="GET" class="un_active" id="form_answer_'. $comment -> comment_id .'">
             
-                <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                <textarea name="comment_'. $comment -> comment_id .'" id="comment_'. $comment -> comment_id .'" class="comment_a" cols="10" rows="5"></textarea>
                 <div class="div_comment">
-                    <i class="first-btn ti-comments-smiley"></i>
-                    <input type="submit" value="Bình luận" id="btn_cmt">
+                    <i class="first-btn ti-comments-smiley" id="btn_'. $comment -> comment_id.'"></i>
+                    <input type="submit" value="Bình luận" class="btn_submit" id="btn_submit_'. $comment -> comment_id .' data-id="'. $comment->comment_id .'">
                 </div>
             </form>
             </li> ';
-           
 
+            $select .= '{
+                selector: "#btn_'. $comment -> comment_id.'",
+                insertInto: "#comment_'. $comment -> comment_id.'"
+            },';
         }
 
-
-        
+        $result .= '
+            <script>
+                new EmojiPicker({
+                    trigger: [
+                        {
+                            selector: "#binh_luan",
+                            insertInto: "#comment" 
+                        },
+                        '. $select .' 
+                    
+                        
+                    ], 
+                    closeButton: true,
+                
+                });   
+            </script>';
         return  $result; 
     }
     

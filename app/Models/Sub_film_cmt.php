@@ -21,4 +21,8 @@ class Sub_film_cmt extends Model
         return $list_cmt;
     }
 
+    static function add_sub_comment($data) {
+        DB::table('sub_film_cmt') -> insert($data);
+    }
+
 }

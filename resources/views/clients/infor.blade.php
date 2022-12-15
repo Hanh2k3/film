@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/episode-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/bottom-content/comment-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/switalert.css') }}">
+    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
 
 @endsection
 
@@ -140,9 +141,9 @@
                 @if (session('user_id'))
                 <form action="#" method="GET">
             
-                    <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                    <textarea name="comment" id="comment" class="cmt_1 comment_a" cols="10" rows="5"></textarea>
                     <div class="div_comment">
-                        <i class="first-btn ti-comments-smiley"></i>
+                        <i class="first-btn ti-comments-smiley" id="binh_luan"></i>
                         <input type="submit" value="Bình luận" id="btn_cmt">
                     </div>
                 </form>
@@ -165,7 +166,6 @@
                                         @else
                                             <img src="{{ asset("uploads/avatar/$comment->avt") }}" alt="Images avatar of user">
                                         @endif
-                                       
                                     </a>
                                 </div>
                                 <div>
@@ -173,7 +173,7 @@
                                         <a class="c_comment_user" href="#">{{ $comment->user_name }}</a>
                                         <p class="c_comment_content">{{ $comment-> comment_content }}</p>
                                         <div>
-                                            <p><a href="">Trả lời</a></p>
+                                            <p><a href="#" class="answer" data-id="{{ $comment->comment_id }}"> lời</a></p>
                                             <p class="c_comment_time">{{ $comment-> created_at }}</p>
                                         </div>
                                     
@@ -181,7 +181,6 @@
                                
                                 </div>
                             </div>
-
                             @if ($comment->sub_cmt)
                                 @foreach ($comment->sub_cmt as $sub)
                                     <div class="div_b">
@@ -210,16 +209,36 @@
                                     </div>  
                                 @endforeach                              
                             @endif
-                          <form action="#" method="GET">
-            
-                                <textarea name="comment" id="comment" class="cmt_1" cols="10" rows="5"></textarea>
+                          <form action="#" method="GET" class="un_active" id="form_answer_{{ $comment->comment_id }}">
+                                <textarea name="comment_{{ $comment->comment_id}}" id="comment_{{ $comment->comment_id }}" class="comment_a" cols="10" rows="5"></textarea>
                                 <div class="div_comment">
-                                    <i class="first-btn ti-comments-smiley"></i>
-                                    <input type="submit" value="Bình luận" id="btn_cmt">
+                                    <i class="ti-comments-smiley" id="btn_{{ $comment->comment_id }}"></i>
+                                    <input type="submit" value="Bình luận" class="btn_submit" id="btn_submit_{{ $comment->comment_id }}" data-id="{{ $comment->comment_id }}">
                                 </div>
                             </form>  
                         </li>
                     @endforeach
+                    <script>
+                      
+                        new EmojiPicker({
+                            trigger: [
+                                {
+                                    selector: '#binh_luan',
+                                    insertInto: '#comment' // '.selector' can be used without array
+                                },
+                                @foreach ( $list_cmt as $comment)
+                                {
+                                    selector: "#btn_{{ $comment->comment_id }}",
+                                    insertInto: "#comment_{{ $comment->comment_id }} " // '.selector' can be used without array
+                                },
+                                    
+                                @endforeach
+                                
+                            ], 
+                            closeButton: true,
+                            //specialButtons: green
+                        });   
+                    </script>
                 </ul>
                 <div class="bt_load_cm">
                     <a href="#" class="fw-600">Tải thêm bình luận</a>
@@ -232,8 +251,22 @@
 
     <script src="{{ asset('clients/js/switalert.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>    
+    <script>  
+        function test1() {
+            $('.answer').click(function () {
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                btn_cmt = t ; 
+                let cl = 'form_answer_' + t ;
+                let answer_form = document.getElementById(cl);
+                console.log(answer_form);
+                answer_form.classList.remove('un_active');
+
+            }); 
+            
+        }  
         var num_star = "{{ $num_star }}"; 
+        var btn_cmt = null ; 
         function add_start_active(a) {
             for(var i=1; i<=a; i++) {
                 let star_id = "rate-" + i ; 
@@ -268,13 +301,14 @@
                     alert('Vui lòng nhập bình luận'); 
                     return ; 
                 }
-                var _token = $('input[name=_token]').val();   
+  
                 var film_id =    "{{ $id }}"; 
                 $.get(
                     '{{route('save_comment')}}',
                     {
                         comment: comment,
-                        film_id: film_id                      
+                        film_id: film_id,
+
                     },
                     function(data) {
                         $('#comment').val('');  
@@ -282,6 +316,52 @@
                     }
                 )      
             })  
+            //  display sub comment 
+            $('.answer').click(function () {
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                btn_cmt = t ; 
+                let cl = 'form_answer_' + t ;
+                let answer_form = document.getElementById(cl);
+                console.log(answer_form);
+                answer_form.classList.remove('un_active');
+
+            }); 
+
+            // submit answer 
+            $('.btn_submit').click(function () {
+               
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                
+                let c = 'comment_' + t ; 
+                let comment = document.getElementById(c).value;
+                
+                if(comment.length == 0 ) {
+                    alert('Vui lòng nhập bình luận'); 
+                    return ; 
+                }
+                var film_id = "{{ $id }}"; 
+                $.get(
+                    '{{route('save_comment')}}',
+                    {
+                        comment: comment,
+                        film_id: film_id,
+                        answer: true,
+                        comment_id: t,
+
+                    },
+                    function(data) {
+                        $('#' + c ).val('');  
+                        let answer_form = document.getElementById(c);
+                        answer_form.classList.add('un_active');
+                        $('.comment_list').html(data); 
+                    }
+                )      
+
+
+
+            }); 
           
             $('.star-evaluate').click(function () {  
                 event.preventDefault();
@@ -311,24 +391,6 @@
                 ) 
             }) 
         });  
-    </script>
-
-    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
-    <script>
-        new EmojiPicker({
-            trigger: [
-                {
-                    selector: '.first-btn',
-                    insertInto: ['#comment'] // '.selector' can be used without array
-                },
-                {
-                    selector: '.second-btn',
-                    insertInto: '.two'
-                }
-            ],
-            closeButton: true,
-            //specialButtons: green
-        });   
     </script>
     <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
     <script src="{{ asset('clients/js/infor.js') }}"></script>
