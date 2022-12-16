@@ -1,7 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="col-md-12">
-    <h1>SỬA TẬP PHIM</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <h1>SỬA TẬP PHIM</h1>
+        </div>
+        <div class="col-md-2" style="text-align: right;">
+            <a href="{{route('adminepisode.show', $episode_get->film_id)}}" class="btn btn-success">Trở Lại</a>
+        </div>
+    </div>
     <form action="{{route('adminepisode.update', $episode_get->episode_id)}}" method="post">
         @csrf
         @method('PUT')

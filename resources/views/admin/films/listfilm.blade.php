@@ -32,7 +32,11 @@
                 </td> --}}
                 <td style="text-align: center">{{$value->film_id}}</td>
                 <td>{{$value->film_name}}</td>
-                <td>{{$value->description}}</td>
+                <td>
+                    <p style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 2;overflow: hidden;">
+                        {{$value->description}}
+                    </p>
+                </td>
                 <td>
                     <img src="{{asset('uploads/avatar_film/' . $value->img)}}" style="width: 60%;">
                 </td>
