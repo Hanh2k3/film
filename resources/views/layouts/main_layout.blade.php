@@ -33,12 +33,7 @@
         </div>
         
     </div>
-
-<<<<<<< HEAD
-
-=======
     <script src="{{asset('clients/js/jquery.js')}}"></script>
->>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
     <script src="{{asset('clients/js/layout.js')}}"></script>
     <script src="{{ asset('clients/js/font-awesome.js') }}"></script>
     @yield('script-tag')

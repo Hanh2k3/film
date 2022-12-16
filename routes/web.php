@@ -56,10 +56,7 @@ Route::prefix('/') -> name('home.')-> group( function () {
 // InforFilm 
 Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
-<<<<<<< HEAD
-
-    
-   
+    Route::delete('/unfollowFilm/{film_id}', [InforController::class, 'unfollowFilm']) -> name('unfollow');
 }); 
  // evaluate film 
 Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('evaluate');
@@ -67,9 +64,8 @@ Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('eval
 Route::get('/comment', [InforController::class, 'save_comment']) -> name('save_comment'); 
 // load_comment 
 Route::get('/load_comment', [InforController::class, 'load_comment']) -> name('load_comment'); 
-=======
-    Route::delete('/unfollowFilm/{film_id}', [InforController::class, 'unfollowFilm']) -> name('unfollow');
-});
+    
+
 
 // Film Store
 Route::prefix('/store') -> name('store.') -> group( function() {
@@ -84,7 +80,7 @@ Route::prefix('/profile')->name('profile.')->group( function() {
     Route::post('/update-avatar', [ProfileController::class, 'updateAvatar'])->name('update_avatar');
     Route::post('/update-user', [ProfileController::class, 'updateUser'])->name('update_user');
 });
->>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
+
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {

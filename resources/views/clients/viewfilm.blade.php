@@ -42,14 +42,12 @@
             </div>
 
             <div class="content_film">
-<<<<<<< HEAD
+
 
                 <iframe src="{{ $link }}" style="width: 100%; height: 100%;" frameborder="0" allowFullScreen="true"></iframe>
 
 
-=======
-                <iframe src="{{$item->episode_link}}" style="width: 100%; height: 100%;" frameborder="0" allowFullScreen="true"></iframe>
->>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
+
             </div>
 
             <div class="settings_film">

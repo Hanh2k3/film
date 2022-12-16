@@ -41,11 +41,13 @@ class InforController extends Controller
             }
         }
         $total = sizeof(Film_cmt::get_all($id)); 
+
+      
         
-         
+    
         return view('clients.infor', compact('id','list_episodes', 'film', 'num_star', 'score', 'list_cmt', 'total')); 
     }
-<<<<<<< HEAD
+
 
     // evaluate film 
     public function evaluate_film(Request $request) {
@@ -313,10 +315,10 @@ class InforController extends Controller
 
     }
     
-=======
+
     public function unfollowFilm($film_id) {
         Store::deleteFilm(session('user_id'), $film_id);
         return redirect()->route('infor.view', $film_id);
     }
->>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
+
 }

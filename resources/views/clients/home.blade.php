@@ -41,9 +41,7 @@
                 @endphp 
                
                 @endforeach
-                @php 
-                    $i =0; 
-                @endphp 
+               
               
             </div>
             <div class="swiper-pagination"></div>
@@ -58,19 +56,21 @@
     <div class="movies-list margin-20">
       
         
-
+        @php 
+            $i =0; 
+        @endphp 
         @foreach ($film_new as $item )
         @php
-            $score = number_format($list_score[$i] -> score, 1) ; 
+            $score = number_format($list_score[$i][0] -> score,1) ; 
         @endphp
         <div class="movie-item">
             <a href="{{ route('infor.view', ['id' => $item->film_id]). '?score='. $score }}">
                 <div class="episode-latest">{{$list_film_new[$i]}}/{{$item->episodes_quantity}}</div>
                 <div>
-                    <img src="{{ $item->img }}" alt="">
+                    <img src="{{ asset("uploads/avatar_film/$item->img") }}" alt="">
                 </div>
 
-                <div class="score">{{ $score}}</div>
+                <div class="score">{{ $score }}</div>
 
                 <div class="name-movie">{{ $item->film_name }}</div>
             </a>
