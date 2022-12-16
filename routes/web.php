@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\InforController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\StoreController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Client\ListFilmController;
 use Illuminate\Http\Request;
 
 /*
@@ -121,6 +122,11 @@ Route::prefix('/forget-password') -> name('forget_password.') -> group( function
 
     Route::get('/change-password/{id}/{token}', [LoginController::class, 'change_password_view']) -> name('change_password_view'); 
     Route::post('/save-change_password', [LoginController::class, 'change_password']) -> name('change_password');
+});
+
+// category film 
+Route::prefix('category_film') -> name('category_film') -> group( function () {
+    Route::get('list/{id}', [ListFilmController::class, 'list_film_category']) -> name('list_film_category');
 });
 
 Route::get('/test', [TestController::class, 'test_icon']);

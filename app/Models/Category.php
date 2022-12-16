@@ -14,4 +14,9 @@ class Category extends Model
         $get = DB::table('categories')->get();
         return $get;
     }
+
+    static function get_category($id) {
+        $category = DB::table('categories') -> where('category_id', $id) -> first();
+        return $category;
+    }
 }

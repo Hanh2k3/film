@@ -5,23 +5,15 @@
     <a href="#" onclick="display1(this,'category')" class="tab"><i>Phim lẻ</i></a>
 </div>
 
+@php 
+$listCategory = listCategory(); 
+
+@endphp
 <div class="tab-content">
     <div class="tab-item" id="category">
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
-        <a href="">Phim Nhat Ban</a>
+        @foreach ($listCategory as $category)  
+            <a href="{{ route('category_filmlist_film_category', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a>
+        @endforeach
     </div>
     
     <div class="tab-item un_active" id="year"> 
