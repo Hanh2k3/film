@@ -12,7 +12,7 @@
 </div>
 <div class="icon">
     <a href="#" onclick="toggle()" class="" id="bu" ><i class="ti-menu"></i></a>
-    <a href=""><i class="ti-bookmark-alt"></i></a>
+    <a href="{{ route('store.index') }}"><i class="ti-bookmark-alt"></i></a>
     @if(session('user_id'))
         <a href="#" onclick="display_account()" id="display_account"><i class="ti-user"></i></a>
         <a href="#" onclick="hide_account()"  style="display:none:" id="hide_account"><i class="ti-layout-placeholder"></i></a>
@@ -36,7 +36,7 @@
         @endif
         <div>{{$user_name}}</div>
     </div>
-    <a href="">Thông tin tài khoản</a>
+    <a href="{{ route('profile.index') }}">Thông tin tài khoản</a>
     <a href="{{route('logout')}}">Đăng xuất</a>
     
 </div>
