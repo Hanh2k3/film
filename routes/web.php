@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\EpisodeController;
 use App\Http\Controllers\admin\FilmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
@@ -29,8 +30,10 @@ Route::prefix('/admin') -> name('admin') -> group( function () {
     Route::get('adminPage', [AdminController::class, 'index']);
     Route::resources([
        'category' => CategoryController::class,
-       'film' => FilmController::class 
+       'film' => FilmController::class,
+       'episode' => EpisodeController::class
     ]);
+    Route::get('create/{film_id}', [EpisodeController::class, 'createEpisode'])->name('create_episode');
 }); 
 
 

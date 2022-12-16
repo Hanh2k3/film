@@ -29,4 +29,11 @@ class Film extends Model
         return $film;
     }
     
+    public function scopeSearch($query)
+    {
+        if ($key = request()->searchByName) {
+            $query = $query->where('film_name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }
 }

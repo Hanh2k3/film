@@ -1,7 +1,15 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="col-md-12">
-    <h1>DANH SÁCH PHIM</h1>
+    <div class="col-md-12 d-flex justify-content-between">
+        <h1 class="col-md-8">DANH SÁCH PHIM</h1>
+        <form action="" class="col-md-4">
+            <div class="input-group">
+                <input type="text" name="searchByName" class="form-control" placeholder="Tìm kiếm...">
+                <button type="submit" class="btn btn-primary"><i class="ti-search"></i></button>
+            </div>
+        </form>
+    </div>
     <table class="table table-bordered table-hover">
         <thead class="table-success">
             {{-- <th>STT</th> --}}
@@ -37,11 +45,15 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"><i class="ti-trash"></i></button>
                    </form>
-                   <a href="" class="btn btn-secondary btn-sm"><i class="ti-settings"></i></a>
+                   <a href="{{route('adminepisode.show', $value->film_id)}}" class="btn btn-secondary btn-sm"><i class="ti-settings"></i></a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div>
+        {{$films->appends(request()->all())->links()}}
+    </div>
 </div>
 @endsection
