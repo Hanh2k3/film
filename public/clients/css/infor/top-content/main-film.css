@@ -58,6 +58,11 @@
     box-shadow: 0 0 3px rgb(91, 91, 91);
     transition: all 0.3s; 
 }
+.poster_film .poster > div .button_box form {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
 .poster_film .poster > div .button_box a:hover {
     background-color: rgba(38, 38, 38, 0.758);
 }

@@ -84,7 +84,7 @@
                     <button style="background-color:#37869e;">Đăng ký</button>
                 </div>
                 <div style="color: #ccc;" id="forget-password">
-                    Bạn đã có tài khoản?<a href="{{route('login.')}}">Đăng nhập</a>
+                    Bạn đã có tài khoản?<a href="{{route('login.index')}}">Đăng nhập</a>
                 </div>
             </div>
        </form>

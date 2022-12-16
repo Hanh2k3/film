@@ -57,14 +57,16 @@ class User extends Authenticatable
         return $email ; 
 
     }
+    // get user by id 
+    static function get_user_by_id($user_id) {
+        $user = DB::table('users')-> select('user_email', 'user_name', 'avt', 'provider', 'created_at') -> where('user_id', $user_id) -> first();
+        return $user ; 
+    }
 
     static function check_user($email, $password) {
         $user = DB::table('users') -> where('user_email', $email) -> where('password', $password) -> first();
         return $user ;
     }
-
-
-
 
     // update token 
     static function update_token($id, $token) {
@@ -84,5 +86,14 @@ class User extends Authenticatable
     static function check_google($user_email) {
         $user = DB::table('users')->where('user_email', $user_email) -> first();
         return $user; 
+    }
+
+    //update avatar
+    static function update_avatar($user_id, $new_name) {
+        DB::table('users')->where('user_id', $user_id)->update(['avt' => $new_name]);
+    }
+    //update user
+    static function update_user($user_id, $user_name, $user_email) {
+        DB::table('users')->where('user_id', $user_id)->update(['user_name'=>$user_name, 'user_email'=>$user_email]);
     }
 }

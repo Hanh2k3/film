@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Episode; 
-use App\Models\Film; 
+use App\Models\Film;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Models\Evaluate;
 use App\Models\Film_cmt; 
@@ -44,6 +45,7 @@ class InforController extends Controller
          
         return view('clients.infor', compact('id','list_episodes', 'film', 'num_star', 'score', 'list_cmt', 'total')); 
     }
+<<<<<<< HEAD
 
     // evaluate film 
     public function evaluate_film(Request $request) {
@@ -311,4 +313,10 @@ class InforController extends Controller
 
     }
     
+=======
+    public function unfollowFilm($film_id) {
+        Store::deleteFilm(session('user_id'), $film_id);
+        return redirect()->route('infor.view', $film_id);
+    }
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
 }

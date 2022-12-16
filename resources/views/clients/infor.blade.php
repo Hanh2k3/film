@@ -26,6 +26,7 @@
 @endsection
 
 @section('content')
+<<<<<<< HEAD
 
      <form action="">
     <div class="form-evaluate un_active" id="form_evaluate1">
@@ -46,6 +47,27 @@
             <i class="ti-star star-evaluate" id="rate-10"  data-id="10"></i>
         </div>
     </div>
+=======
+    <form action="">
+        <div class="form-evaluate un_active" id="form_evaluate1">
+            <div class="head-evaluate">
+                <span>Đánh giá phim</span>
+                <button id="exits" onclick="exits_form_evaluate();"><i class="ti-close"></i></button>
+            </div>
+            <div class="start">
+                <i class="ti-star star-active" onclick="alert('test');"></i>
+                <i class="ti-star" id="rate-2"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+                <i class="ti-star"></i>
+            </div>
+        </div>
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
     </form>
     <div class="top_content">
         <div class="name_film">
@@ -55,11 +77,30 @@
         <div class="main_film">
             <div class="poster_film" id="poster_film">
                 <div class="poster" id="poster_id">
+<<<<<<< HEAD
                     <img src="{{asset('uploads/img_film/test.jpg')}}" alt="">
+=======
+                    <img src="{{ $film->img }}" alt="">
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
                     <div>
                         <div class="button_box">
-                            <a class="btn_watch" href="{{route('viewPage.', ['film_id' => $id, 'episode_id' => 1 ])}}">Xem phim</a>
-                            <a class="btn_remember" href="{{ '#' }}">Lưu phim</a>
+                            <a class="btn_watch" href="{{ route('viewPage.', ['film_id' => $id, 'episode_id' => 1]) }}">Xem
+                                phim</a>
+                            <form action="{{ route('store.insert') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="film_id" value="{{ $film->film_id }}">
+                                <button id="infor-btn-submit"></button>
+                            </form>
+                            @if (checkFollowedFilm($film->film_id))
+                                <form action="{{ route('infor.unfollow', ['film_id' => $film->film_id]) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button id="infor-btn-unfollow"></button>
+                                </form>
+                                <a class="btn_remember" href="#" onclick="$('#infor-btn-unfollow').click()">Bỏ lưu</a>
+                            @else
+                                <a class="btn_remember" href="#" onclick="$('#infor-btn-submit').click()">Lưu phim</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -91,8 +132,13 @@
                         </table>
                         <div class="detail_content content_film">
                             <h5>Nội dung:</h5>
+<<<<<<< HEAD
                             {{ $description }}
                                     
+=======
+                            {{-- Put data here --}}
+                            <p>{{ $film->description }}</p>
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
                         </div>
                     </div>
                 </div>
@@ -111,21 +157,26 @@
                 <div>
                     {{-- Put data here --}}
                     @foreach ($list_episodes as $episode)
-                        <a href="{{route('viewPage.', ['film_id' => $id, 'episode_id' => $episode->episode_number])}}">{{ $episode->episode_number }}</a>
+                        <a
+                            href="{{ route('viewPage.', ['film_id' => $id, 'episode_id' => $episode->episode_number]) }}">{{ $episode->episode_number }}</a>
                     @endforeach
                 </div>
             </div>
         </div>
         <div class="comment_film">
-            @if(session('user_id'))
-            <div class="comment_head border-none">
-                {{-- Put data here --}}
-               <button id="btn_evaluate" onclick="display_form_evaluate();">Đánh giá</button>
-            </div>
-
+            @if (session('user_id'))
+                <div class="comment_head border-none">
+                    {{-- Put data here --}}
+                    <button id="btn_evaluate" onclick="display_form_evaluate();">Đánh giá</button>
+                </div>
             @endif
+<<<<<<< HEAD
        
          <div class="comment_head">
+=======
+
+            <div class="comment_head">
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
                 {{-- Put data here --}}
               <p class="comment_title" id="total">Bình luận ({{ $total }})</p>
                 <div class="comment_nav">
@@ -139,6 +190,7 @@
             </div>  
             <div class="comment_container">
                 @if (session('user_id'))
+<<<<<<< HEAD
                 <form action="#" method="GET">
             
                     <textarea name="comment" id="comment" class="cmt_1 comment_a" cols="10" rows="5"></textarea>
@@ -147,12 +199,18 @@
                         <input type="submit" value="Bình luận" id="btn_cmt">
                     </div>
                 </form>
+=======
+                    <form action="{{ '#' }}">
+                        <input type="text" name="your_comment" placeholder="Nhập bình luận">
+                        <div><input type="submit" value="Bình luận"></div>
+                    </form>
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
                 @else
                     <div class="login-comment">
                         <a href="{{ route('login.index') }}">Đăng nhập để bình luận</a>
                     </div>
                 @endif
-               
+
                 <ul class="comment_list">
                     {{-- Put data here --}}
                     @foreach ($list_cmt as $comment)

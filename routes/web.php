@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\EpisodeController;
 use App\Http\Controllers\admin\FilmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
@@ -9,7 +10,11 @@ use App\Http\Controllers\Client\ViewFilmController;
 use App\Http\Controllers\Client\LoginController; 
 use App\Http\Controllers\Client\RegisterController; 
 use App\Http\Controllers\Client\InforController;
-use App\Http\Controllers\TestController; 
+use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\Client\StoreController;
+use App\Http\Controllers\TestController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +34,10 @@ Route::prefix('/admin') -> name('admin') -> group( function () {
     Route::get('adminPage', [AdminController::class, 'index']);
     Route::resources([
        'category' => CategoryController::class,
-       'film' => FilmController::class 
+       'film' => FilmController::class,
+       'episode' => EpisodeController::class
     ]);
+    Route::get('create/{film_id}', [EpisodeController::class, 'createEpisode'])->name('create_episode');
 }); 
 
 
@@ -49,6 +56,7 @@ Route::prefix('/') -> name('home.')-> group( function () {
 // InforFilm 
 Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
+<<<<<<< HEAD
 
     
    
@@ -59,6 +67,24 @@ Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('eval
 Route::get('/comment', [InforController::class, 'save_comment']) -> name('save_comment'); 
 // load_comment 
 Route::get('/load_comment', [InforController::class, 'load_comment']) -> name('load_comment'); 
+=======
+    Route::delete('/unfollowFilm/{film_id}', [InforController::class, 'unfollowFilm']) -> name('unfollow');
+});
+
+// Film Store
+Route::prefix('/store') -> name('store.') -> group( function() {
+    Route::get('/', [StoreController::class, 'index'])->name('index');
+    Route::post('/', [StoreController::class, 'insert'])->name('insert');
+    Route::delete('/delete/{film_id}', [StoreController::class, 'delete'])->name('delete');
+});
+
+//Profile
+Route::prefix('/profile')->name('profile.')->group( function() {
+    Route::get('/', [ProfileController::class, 'index'])->name('index');
+    Route::post('/update-avatar', [ProfileController::class, 'updateAvatar'])->name('update_avatar');
+    Route::post('/update-user', [ProfileController::class, 'updateUser'])->name('update_user');
+});
+>>>>>>> 2a22165e738a9fa0d56ae5ca40ff8641ac05228c
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
@@ -67,6 +93,7 @@ Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
 // index film comments 
 Route::get('/view_page_comment', [ViewFilmController::class, 'save_comment']) -> name('save_comment_view') ;
 Route::get('/view_page_comment_load', [ViewFilmController::class, 'load_comment']) -> name('load_comment_view') ;
+
 
 // login user 
 Route::prefix('/login') -> name('login.') -> group( function () {
@@ -102,3 +129,7 @@ Route::prefix('/forget-password') -> name('forget_password.') -> group( function
 
 Route::get('/test', [TestController::class, 'test_icon']);
 
+
+// Route::get('/user', function () {
+//     echo session('user_id');
+// });

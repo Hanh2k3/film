@@ -24,8 +24,8 @@ class HomeController extends Controller
         }
         $i = 0 ;
        
-        // get film new 
-        $film_new = Film::getListFilm(2); 
+        // get film new
+        $film_new = Film::getListFilm(2);
         $list_film_new = null ; 
         $i = 0 ; 
         foreach ($film_new as $item) {
