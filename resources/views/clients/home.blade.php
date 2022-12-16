@@ -27,10 +27,13 @@
                 @endphp 
                 
                 @foreach ($film as $item )    
+                @php
+                $score = number_format($list_score_1[$i][0] -> score,1) ; 
+                @endphp
                     <div id="card" class="swiper-slide">
-                        <a href="{{route('infor.view', ['id' => $item->film_id])}}">
+                        <a href="{{ route('infor.view', ['id' => $item->film_id]). '?score='. $score }}">
                             <div>
-                                <img src="{{$item->img}}" alt="">
+                                <img src="{{ asset("uploads/avatar_film/$item->img") }}" alt="">
                             </div>
                         </a>
                         <div class="name">{{$item->film_name}}</div>

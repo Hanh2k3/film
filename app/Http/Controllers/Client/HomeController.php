@@ -16,7 +16,7 @@ class HomeController extends Controller
         // get list film đề cử 
         $film = Film::getListFilm(4); 
 
-        dd($film); 
+     
         $list_film = null ; 
         $i = 0 ; 
         foreach ($film as $item) {
@@ -25,7 +25,16 @@ class HomeController extends Controller
             $i +=1; 
         }
         $i = 0 ;
-       
+
+        $list_score_1 = null ;
+        $i=0; 
+        foreach ($film as $item) {
+            $film_id = $item->film_id;  
+            $list_film_new[$i] = sizeof(Episode::getListEpisodes($film_id)); 
+        
+            $list_score_1[$i] = Evaluate::get_avg_evaluation($film_id);
+            $i +=1; 
+        }
         // get film new
         $film_new = Film::getListFilm(5);
         $list_film_new = null ; 
@@ -40,7 +49,7 @@ class HomeController extends Controller
        
         
 
-        return view('clients.home', compact('film', 'list_film', 'film_new', 'list_film_new', 'list_score')); 
+        return view('clients.home', compact('film', 'list_film', 'film_new', 'list_film_new', 'list_score', 'list_score_1')); 
     }
 
 
