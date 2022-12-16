@@ -33,7 +33,7 @@
                     <div id="card" class="swiper-slide">
                         <a href="{{ route('infor.view', ['id' => $item->film_id]). '?score='. $score }}">
                             <div>
-                                <img src="{{ asset("uploads/avatar_film/$item->img") }}" alt="">
+                                <img src="{{ asset("uploads/avatar_film/$item->img") }}" style="width: 250px; height: 350px" alt="">
                             </div>
                         </a>
                         <div class="name">{{$item->film_name}}</div>
