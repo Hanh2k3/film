@@ -51,16 +51,22 @@ Route::prefix('/infor') -> name('infor.')-> group( function () {
     Route::get('/{id}', [InforController::class, 'index']) -> name('view');
 
     
-    // comment film 
+   
 }); 
  // evaluate film 
 Route::get('/danh-gia', [InforController::class, 'evaluate_film']) -> name('evaluate');
+ // comment film 
 Route::get('/comment', [InforController::class, 'save_comment']) -> name('save_comment'); 
+// load_comment 
+Route::get('/load_comment', [InforController::class, 'load_comment']) -> name('load_comment'); 
 
 // index film 
 Route::prefix('/viewPage') -> name('viewPage.') -> group( function () {
     Route::get('/{film_id}/{episode_id}', [ViewFilmController::class, 'index']) ;
 });
+// index film comments 
+Route::get('/view_page_comment', [ViewFilmController::class, 'save_comment']) -> name('save_comment_view') ;
+Route::get('/view_page_comment_load', [ViewFilmController::class, 'load_comment']) -> name('load_comment_view') ;
 
 // login user 
 Route::prefix('/login') -> name('login.') -> group( function () {

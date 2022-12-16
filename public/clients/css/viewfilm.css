@@ -305,3 +305,13 @@
     text-decoration: none;
     color: #fff;
 }
+.comment_film .comment_head {
+    width: 100% !important; 
+}
+.comment_film .comment_container {
+    width: 100% !important;
+}
+
+.comment_film { 
+    background: none !important;
+}

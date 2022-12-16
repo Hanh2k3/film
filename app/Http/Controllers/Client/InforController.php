@@ -27,7 +27,7 @@ class InforController extends Controller
             $num_star = 0 ; 
         }
         $score = $request->score;
-        $list_cmt = Film_cmt::get_cmt($id);
+        $list_cmt = Film_cmt::get_cmt($id,5);
         
         foreach ($list_cmt as $item) {
             $list_sub_cmt = Sub_film_cmt::get_sub_cmt($item->comment_id); 
@@ -39,9 +39,10 @@ class InforController extends Controller
                 
             }
         }
+        $total = sizeof(Film_cmt::get_all($id)); 
         
          
-        return view('clients.infor', compact('id','list_episodes', 'film', 'num_star', 'score', 'list_cmt')); 
+        return view('clients.infor', compact('id','list_episodes', 'film', 'num_star', 'score', 'list_cmt', 'total')); 
     }
 
     // evaluate film 
@@ -85,7 +86,7 @@ class InforController extends Controller
        
        
 
-        $list_cmt = Film_cmt::get_cmt($data['film_id']);
+        $list_cmt = Film_cmt::get_cmt($data['film_id'],$request->times_load);
         
         foreach ($list_cmt as $item) {
             $list_sub_cmt = Sub_film_cmt::get_sub_cmt($item->comment_id); 
@@ -121,7 +122,7 @@ class InforController extends Controller
                    <a class="c_comment_user" href="#">'. $comment->user_name .'</a>
                    <p class="c_comment_content">'. $comment-> comment_content .'</p>
                    <div>
-                       <p><a class="answer" data-id="'. $comment-> comment_id.'" onclick="test1();">Trả lời</a></p>
+                       <p><button href="" class="answer" data-id="'. $comment-> comment_id.'" onclick="test1();">Trả lời</button></p>
                        <p class="c_comment_time">'. $comment-> created_at .'</p>
                    </div>
                </div>
@@ -192,6 +193,122 @@ class InforController extends Controller
                 });   
             </script>';
         return  $result; 
+    }
+
+    public function load_comment(Request $request) {
+        $data['film_id'] = $request-> film_id;
+        $data['times_load'] = $request-> times_load;
+        $list_cmt = Film_cmt::get_cmt($data['film_id'],$data['times_load']);
+        foreach ($list_cmt as $item) {
+            $list_sub_cmt = Sub_film_cmt::get_sub_cmt($item->comment_id); 
+
+            if(sizeof($list_sub_cmt) != 0 ) {
+                $item -> sub_cmt = $list_sub_cmt;
+            } else {
+                $item -> sub_cmt = null;
+                
+            }
+        }
+
+        $result = ''; 
+        $select = ''; 
+
+        foreach ($list_cmt as $comment) {
+           if($comment->provider) {
+                $img = '<img src="'. $comment->avt . '" alt="">'; 
+
+           } else {
+                $img = '<img src="'.asset("uploads/avatar/$comment->avt") . '" alt="">'; 
+
+           }
+           $result.= ' <li>
+           <div class="parent_comment">
+           <div class="c_comment_head">
+
+               <a href="#">'.
+                  $img.'
+               </a>
+           </div>
+           <div>
+               <div class="c_comment_body">
+                   <a class="c_comment_user" href="#">'. $comment->user_name .'</a>
+                   <p class="c_comment_content">'. $comment-> comment_content .'</p>
+                   <div>
+                       <p><button href="" class="answer" data-id="'. $comment-> comment_id.'" onclick="test1();">Trả lời</button></p>
+                       <p class="c_comment_time">'. $comment-> created_at .'</p>
+                   </div>
+               </div>
+            </div>
+            </div>'; 
+
+           if($comment->sub_cmt) {
+                foreach ($comment->sub_cmt as $sub) {
+                    if($sub->provider) {
+                        $img_sub = '<img src="'. $sub->avt . '" alt="">'; 
+        
+                   } else {
+                        $img_sub = '<img src="'.asset("uploads/avatar/$sub->avt") . '" alt="">'; 
+        
+                   }
+                   $result.= '<div class="div_b">
+                    <div class="sub_cmt">
+                        <div class="c_comment_head">
+                            <a href="#">'.
+                                $img_sub
+                            .'</a>
+                        </div>
+                        <div>
+                            <div class="c_comment_body">
+                                <a class="c_comment_user" href="#">'. $sub-> user_name .'</a>
+                                <p class="c_comment_content">'. $sub-> comment_content .'</p>
+                                <div>
+                                    <p class="c_comment_time">'. $sub->created_at .'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div> ';
+
+                }
+
+           }
+           $result .= '<form action="#" method="GET" class="un_active" id="form_answer_'. $comment -> comment_id .'">
+            
+                <textarea name="comment_'. $comment -> comment_id .'" id="comment_'. $comment -> comment_id .'" class="comment_a" cols="10" rows="5"></textarea>
+                <div class="div_comment">
+                    <i class="first-btn ti-comments-smiley" id="btn_'. $comment -> comment_id.'"></i>
+                    <input type="submit" value="Bình luận" class="btn_submit" id="btn_submit_'. $comment -> comment_id .' data-id="'. $comment->comment_id .'">
+                </div>
+            </form>
+            </li> ';
+
+            $select .= '{
+                selector: "#btn_'. $comment -> comment_id.'",
+                insertInto: "#comment_'. $comment -> comment_id.'"
+            },';
+        }
+
+        $result .= '
+            <script>
+                new EmojiPicker({
+                    trigger: [
+                        {
+                            selector: "#binh_luan",
+                            insertInto: "#comment" 
+                        },
+                        '. $select .' 
+                    
+                        
+                    ], 
+                    closeButton: true,
+                
+                });   
+            </script>';
+      
+        $rs['result'] = $result; 
+        $rs['total_cmt'] = sizeof(Film_cmt::get_all($data['film_id'])); 
+        return  $rs; 
+
     }
     
 }

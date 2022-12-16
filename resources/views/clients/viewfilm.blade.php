@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('clients/css/switalert.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/top-content/name-film.css') }}">
     <link rel="stylesheet" href="{{ asset('clients/css/infor/top-content/main-film.css') }}">
+    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
 @endsection
 
 @section('content')
@@ -42,7 +43,7 @@
 
             <div class="content_film">
 
-                <iframe src="{{$item->episode_link}}" style="width: 100%; height: 100%;" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe src="{{ $link }}" style="width: 100%; height: 100%;" frameborder="0" allowFullScreen="true"></iframe>
 
 
             </div>
@@ -72,103 +73,265 @@
                 </div>
             </div>
 
-            <div class="gd_comment">
-                <div class="comment_film" style="background: none;">
-                    <div class="comment_head" style="width: 100%;">
+            <div class="comment_film">
+                
+               
+           
+             <div class="comment_head">
+                    {{-- Put data here --}}
+                  <p class="comment_title" id="total">Bình luận ({{ $total }})</p>
+                    <div class="comment_nav">
                         {{-- Put data here --}}
-                        <p class="comment_title">Bình luận ({{ '123' }})</p>
-                        <div class="comment_nav">
-                            {{-- Put data here --}}
-                            <select name="" id="">
-                                <option value=""><a href="#">Mặc định</a></option>
-                                <option value=""><a href="#">Mới nhất</a></option>
-                                <option value=""><a href="#">Cũ nhất</a></option>
-                            </select>
-                        </div>
+                    <select name="" id="">
+                            <option value=""><a href="#">Mặc định</a></option>
+                            <option value=""><a href="#">Mới nhất</a></option>
+                            <option value=""><a href="#">Cũ nhất</a></option>
+                    </select>
                     </div>
-                    <div class="comment_container" style="width: 100%;">
-                        @if (session('user_id'))
-                        <form action="{{ '#' }}">
-                            <textarea name="comment" id="comment" class="comment_a" cols="10" rows="5"></textarea>
-                            <div class="div_comment">
-                                <i class="first-btn ti-comments-smiley"></i>
-                                <input type="submit" value="Bình luận" id="btn_cmt">
-                            </div>
-                        </form>
-                        @else
-                            <div class="login-comment">
-                                <a href="{{ route('login.index') }}">Đăng nhập để bình luận</a>
-                            </div>
-                        @endif
-                       
-                        <ul class="comment_list">
-                            {{-- Put data here --}}
-                            @foreach ($list_episodes as $comment)
-                                <li>
+                </div>  
+                <div class="comment_container">
+                    @if (session('user_id'))
+                    <form action="#" method="GET">
+                
+                        <textarea name="comment" id="comment" class="cmt_1 comment_a" cols="10" rows="5"></textarea>
+                        <div class="div_comment">
+                            <i class="first-btn ti-comments-smiley" id="binh_luan"></i>
+                            <input type="submit" value="Bình luận" id="btn_cmt">
+                        </div>
+                    </form>
+                    @else
+                        <div class="login-comment">
+                            <a href="{{ route('login.index') }}">Đăng nhập để bình luận</a>
+                        </div>
+                    @endif
+                   
+                    <ul class="comment_list">
+                        {{-- Put data here --}}
+                        @foreach ($list_cmt as $comment)
+                            <li>
+                                <div class="parent_comment">
                                     <div class="c_comment_head">
-                                        <a href="#"><img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/312806537_658556435769267_2568947083291964863_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=BceEm5ZU8zkAX_SgCHb&_nc_ht=scontent.fdad1-3.fna&oh=00_AfCvrLJUWkIg6gm29_1IuvmlwWHoo-dxWtrPiayn-AdI3g&oe=639EA5F1" alt=""></a>
+    
+                                        <a href="#">
+                                            @if ($comment->provider)
+                                                <img src="{{ $comment->avt }}" alt="">
+                                            @else
+                                                <img src="{{ asset("uploads/avatar/$comment->avt") }}" alt="Images avatar of user">
+                                            @endif
+                                        </a>
                                     </div>
                                     <div>
                                         <div class="c_comment_body">
-                                            <a class="c_comment_user" href="#">{{ 'Name of User' }}</a>
-                                            <p class="c_comment_content">{{ 'This is a test comment' }}</p>
+                                            <a class="c_comment_user" href="#">{{ $comment->user_name }}</a>
+                                            <p class="c_comment_content">{{ $comment-> comment_content }}</p>
                                             <div>
-                                                <p><a href="">Trả lời</a></p>
-                                                <p class="c_comment_time">{{ 'comment time' }}</p>
+                                                <p><button href="#" class="answer" data-id="{{ $comment->comment_id }}">Trả lời</button></p>
+                                                <p class="c_comment_time">{{ $comment-> created_at }}</p>
                                             </div>
+                                        
                                         </div>
-                                        <div class="c_comment_tail">
-                                            {{-- Continue --}}
-                                        </div>
+                                   
                                     </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                         <div class="bt_load_cm">
-                                <a href="#" class="fw-600">Tải thêm bình luận</a>
-                        </div>
+                                </div>
+                                @if ($comment->sub_cmt)
+                                    @foreach ($comment->sub_cmt as $sub)
+                                        <div class="div_b">
+                                            <div class="sub_cmt">
+                                                <div class="c_comment_head">
+                                                    <a href="#">
+                                                        @if ($sub->provider)
+                                                            <img src="{{ $sub->avt }}" alt="">
+                                                        @else
+                                                            <img src="{{ asset("uploads/avatar/$sub->avt") }}" alt="Images avatar of user">
+                                                        @endif
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <div class="c_comment_body">
+                                                        <a class="c_comment_user" href="#">{{ $sub-> user_name }}</a>
+                                                        <p class="c_comment_content">{{$sub-> comment_content }}</p>
+                                                        <div>
+                                                            <p class="c_comment_time">{{ $sub->created_at }}</p>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                 
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    @endforeach                              
+                                @endif
+                              <form action="#" method="GET" class="un_active" id="form_answer_{{ $comment->comment_id }}">
+                                    <textarea name="comment_{{ $comment->comment_id}}" id="comment_{{ $comment->comment_id }}" class="comment_a" cols="10" rows="5"></textarea>
+                                    <div class="div_comment">
+                                        <i class="ti-comments-smiley" id="btn_{{ $comment->comment_id }}"></i>
+                                        <input type="submit" value="Bình luận" class="btn_submit" id="btn_submit_{{ $comment->comment_id }}" data-id="{{ $comment->comment_id }}">
+                                    </div>
+                                </form>  
+                            </li>
+                        @endforeach
+                        <script>
+                            new EmojiPicker({
+                                trigger: [
+                                    {
+                                        selector: '#binh_luan',
+                                        insertInto: '#comment' // '.selector' can be used without array
+                                    },
+                                    @foreach ( $list_cmt as $comment)
+                                    {
+                                        selector: "#btn_{{ $comment->comment_id }}",
+                                        insertInto: "#comment_{{ $comment->comment_id }} " // '.selector' can be used without array
+                                    },
+                                        
+                                    @endforeach
+                                    
+                                ], 
+                                closeButton: true,
+                                //specialButtons: green
+                            });     
+                        </script>
+                    </ul>
+                    <div class="bt_load_cm" id="load_cm">
+                        <button href="#" class="fw-600" id="btn_load">Tải thêm bình luận</button>
                     </div>
-                    
                 </div>
-        </div>
+            </div>
     </div>
 
  
 
 
-    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
+
     <script src="{{ asset('clients/js/switalert.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{{ asset('clients/js/vanillaEmojiPicker.js') }}"></script>
     <script>
+        
+        var times_load = 5  ;
+        var total = "{{ $total }}";
+        total = Number(total); 
+       
+        function test1() {
+            $('.answer').click(function () {
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                btn_cmt = t ; 
+                let cl = 'form_answer_' + t ;
+                let answer_form = document.getElementById(cl);
+                console.log(answer_form);
+                answer_form.classList.remove('un_active');
+
+            }); 
             
-        new EmojiPicker({
-            trigger: [
-                {
-                    selector: '.first-btn',
-                    insertInto: ['#comment'] // '.selector' can be used without array
-                },
-                {
-                    selector: '.second-btn',
-                    insertInto: '.two'
-                }
-            ],
-            closeButton: true,
-            //specialButtons: green
-        });
+        }  
+    </script>
+
+    <script>
         $(document).ready(function () {
             $('#btn_cmt').click(function () {
                 event.preventDefault();
-                let comment = document.getElementById('comment').value;
+                let  comment = document.getElementById('comment').value;
+                
+                
                 if (comment.length == 0) {
                     alert('Vui lòng nhập bình luận'); 
                     return ; 
                 }
-                alert(true); 
-            })
-        
-        });
-    </script> 
+  
+                var film_id = "{{ $film_id }}";
+                var episode = "{{ $episode }}"; 
+                $.get(
+                    '{{route('save_comment_view')}}',
+                    {
+                        comment: comment,
+                        film_id: film_id,
+                        times_load: times_load,
+                        episode: episode,
+
+                    },
+                    function(data) {
+                        $('#comment').val('');  
+                        $('.comment_list').html(data); 
+                        total+=1; 
+                        document.getElementById('total').innerText = 'Bình luận (' + total +  ')' ;
+                       
+ 
+                    }
+                )      
+            }) ;
+
+            // answer comment 
+            $('.answer').click(function () {
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                btn_cmt = t ; 
+                let cl = 'form_answer_' + t ;
+                let answer_form = document.getElementById(cl);
+                console.log(answer_form);
+                answer_form.classList.remove('un_active');
+
+            }); 
+
+            $('.btn_submit').click(function () {
+               
+                event.preventDefault();
+                let t = $(this).data('id'); 
+                
+                let c = 'comment_' + t ; 
+                let comment = document.getElementById(c).value;
+                let episode = "{{ $episode }}"; 
+                
+                if(comment.length == 0 ) {
+                    alert('Vui lòng nhập bình luận'); 
+                    return ; 
+                }
+                var film_id = "{{ $film_id }}"; 
+                $.get(
+                    '{{route('save_comment_view')}}',
+                    {
+                        comment: comment,
+                        film_id: film_id,
+                        episode: episode,
+                        answer: true,
+                        comment_id: t,
+                        times_load: times_load,
+
+                    },
+                    function(data) {
+                        $('#' + c ).val('');  
+                        let answer_form = document.getElementById(c);
+                        answer_form.classList.add('un_active');
+                        $('.comment_list').html(data); 
+                    }
+                )      
+            }); 
+
+            $('#btn_load').click(function () {
+                
+                event.preventDefault();
+                times_load += 5;
+                let film_id = "{{ $film_id }}";  
+                let episode = "{{ $episode }}"; 
+                $.get(
+                    '{{route('load_comment_view')}}',
+                    {
+                        times_load: times_load,
+                        film_id: film_id,
+                        episode: episode,
+
+                    },
+                    function(data) {  
+                        if(times_load >= total) {
+                            var t = document.getElementById('load_cm'); 
+                            t.style.display = 'none';
+                        }
+                        $('.comment_list').html(data['result']); 
+                    }
+                );
+            }); 
+
+        })
+    </script>
+
  
 @endsection
 

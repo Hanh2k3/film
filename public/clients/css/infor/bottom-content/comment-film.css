@@ -125,11 +125,14 @@
    
     flex: 1;
 }
-.comment_list li > div .c_comment_body a {
+.comment_list li > div .c_comment_body button,a {
     text-decoration: none;
     color:  white;
     font-size: var(--fontSize);
     font-weight: bolder;
+    background: none; 
+    border: none;
+    padding: 0 ; 
 }
 .comment_list li > div .c_comment_body p {
     margin: 0;
@@ -278,8 +281,9 @@
 .bt_load_cm:hover{
     opacity: 0.8;
 }
-.bt_load_cm a{
-    text-decoration: none;
+.bt_load_cm button{
+    background: none; 
+    border: none;
     color: #fff;
 }
 .comment_container .div_comment i, #btn_cmt {

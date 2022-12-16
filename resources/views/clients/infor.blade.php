@@ -127,7 +127,7 @@
        
          <div class="comment_head">
                 {{-- Put data here --}}
-              <p class="comment_title">Bình luận ({{ '123' }})</p>
+              <p class="comment_title" id="total">Bình luận ({{ $total }})</p>
                 <div class="comment_nav">
                     {{-- Put data here --}}
                 <select name="" id="">
@@ -173,7 +173,7 @@
                                         <a class="c_comment_user" href="#">{{ $comment->user_name }}</a>
                                         <p class="c_comment_content">{{ $comment-> comment_content }}</p>
                                         <div>
-                                            <p><a href="#" class="answer" data-id="{{ $comment->comment_id }}"> lời</a></p>
+                                            <p><button href="#" class="answer" data-id="{{ $comment->comment_id }}">Trả lời</button></p>
                                             <p class="c_comment_time">{{ $comment-> created_at }}</p>
                                         </div>
                                     
@@ -240,8 +240,8 @@
                         });   
                     </script>
                 </ul>
-                <div class="bt_load_cm">
-                    <a href="#" class="fw-600">Tải thêm bình luận</a>
+                <div class="bt_load_cm" id="load_cm">
+                    <button href="#" class="fw-600" id="btn_load">Tải thêm bình luận</button>
                 </div>
             </div>
         </div>
@@ -251,7 +251,11 @@
 
     <script src="{{ asset('clients/js/switalert.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>  
+    <script> 
+        var times_load = 5  ;
+        var total = "{{ $total }}" ;
+        total = Number(total); 
+       
         function test1() {
             $('.answer').click(function () {
                 event.preventDefault();
@@ -302,17 +306,22 @@
                     return ; 
                 }
   
-                var film_id =    "{{ $id }}"; 
+                var film_id = "{{ $id }}"; 
                 $.get(
                     '{{route('save_comment')}}',
                     {
                         comment: comment,
                         film_id: film_id,
+                        times_load: times_load,
 
                     },
                     function(data) {
                         $('#comment').val('');  
                         $('.comment_list').html(data); 
+                        total+=1; 
+                        document.getElementById('total').innerText = 'Bình luận (' + total +  ')' ;
+                       
+ 
                     }
                 )      
             })  
@@ -349,6 +358,7 @@
                         film_id: film_id,
                         answer: true,
                         comment_id: t,
+                        times_load: times_load,
 
                     },
                     function(data) {
@@ -358,11 +368,29 @@
                         $('.comment_list').html(data); 
                     }
                 )      
-
-
-
             }); 
-          
+
+            // load comment 
+            $('#btn_load').click(function () {
+                event.preventDefault();
+                times_load += 5;
+                let film_id = "{{ $id }}";  
+                $.get(
+                    '{{route('load_comment')}}',
+                    {
+                        times_load: times_load,
+                        film_id: film_id,
+                    },
+                    function(data) {  
+                        if(times_load >= total) {
+                            var t = document.getElementById('load_cm'); 
+                            t.style.display = 'none';
+                        }
+                        $('.comment_list').html(data['result']); 
+                    }
+                );
+            }); 
+            
             $('.star-evaluate').click(function () {  
                 event.preventDefault();
                 var t  = $(this).data('id');
