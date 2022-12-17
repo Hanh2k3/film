@@ -41,12 +41,25 @@ class Film extends Model
         return $query;
     }
 
-    static function search_film($key) {
+    static function search_film($key)
+    {
         $listFilm = DB::table('film')
-                    ->where('film_name', 'like' ,'%' . $key . '%')
-                    ->orWhere('description', 'like', '%' . $key . '%')
-                    ->orWhere('episodes_quantity','like', '%' . $key . '%')
-                    -> get();
+            ->where('film_name', 'like', '%' . $key . '%')
+            ->orWhere('description', 'like', '%' . $key . '%')
+            ->orWhere('episodes_quantity', 'like', '%' . $key . '%')
+            ->get();
         return $listFilm;
+    }
+
+    static function get_listYear()
+    {
+        $list = DB::table('film')->select('release_date')->orderBy('release_date', 'DESC')->get();
+        return $list;
+    }
+
+    static function get_by_year($year)
+    {
+        $list = DB::table('film')->where('release_date', 'like', $year . "%")->orderBy('release_date', 'DESC')->get();
+        return $list; 
     }
 }

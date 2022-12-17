@@ -1,7 +1,7 @@
 @extends('layouts.main_layout')
 
 @section('title')
-    {{ $category->category_name }}
+    {{ $year}}
 @endsection
 
 @section('meta_tag')
@@ -15,7 +15,7 @@
 @section('content')
     <div class="margin-20">
         <div class="banner">
-            <div>{{ $category->category_name }}</div>
+            <div>{{ $year}}</div>
         </div>
     </div>
 

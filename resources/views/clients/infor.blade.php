@@ -96,30 +96,13 @@
             <div class="detail_film">
                 <div class="detail">
                     <div class="detail_list" id="detail_list">
-                        <table class="detail_content">
-                            @foreach ($list_episodes as $row)
-                                <tr class="table_row">
-                                    {{-- Put data here --}}
-                                    <th>Trạng thái:</th>
-                                    <td>Full 12/12 tập</td>
-                                </tr>
-                            @endforeach
-                        </table>
-                        <div class="detail_content content_film">
+        
+                        <div class="detail_content content_film" style="display: table; ">
                             <h5>Nội dung:</h5>
-
-
-
-
                             {{-- Put data here --}}
                             <p>{!! $description !!}</p>
 
                         </div>
-                    </div>
-                </div>
-                <div class="detail_btn">
-                    <div>
-                        <button id="btn_detail_film" onclick="handleDetailFilm()"></button>
                     </div>
                 </div>
             </div>

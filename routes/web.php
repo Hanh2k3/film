@@ -132,6 +132,7 @@ Route::prefix('category_film') -> name('category_film') -> group( function () {
 
 // search film 
 Route::get('search_film', [SearchController::class, 'index']) -> name('search_film');
+Route::get('filter_by_year', [SearchController::class, 'filter_by_year'])->name('filter_by_year'); 
 
 Route::get('/test', [TestController::class, 'test_icon']);
 

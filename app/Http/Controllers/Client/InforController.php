@@ -302,10 +302,10 @@ class InforController extends Controller
                         {
                             selector: "#binh_luan",
                             insertInto: "#comment" 
-                        },
+                        },   
                         ' . $select . ' 
                     
-                        
+                            
                     ], 
                     closeButton: true,
                 
