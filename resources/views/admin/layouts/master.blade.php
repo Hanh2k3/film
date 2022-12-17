@@ -9,6 +9,7 @@
     <!--Master Page-->
     <title>Trang Quản Trị</title>
     @include('libraries.toplibs')
+    @yield('link-style')
 </head>
 
 <body>

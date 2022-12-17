@@ -80,7 +80,7 @@
     visibility: hidden;
 }
 
-.profile-avt-btnsubmit {
+.profile-avt-btnsubmit, .profile-avt-btnsubmit-google {
     display: block;
     padding: 3px 10px;
     color: rgb(255, 255, 255);
@@ -94,7 +94,7 @@
     text-shadow: var(--textShadow);
 }
 
-.profile-avt-btnsubmit:hover {
+.profile-avt-btnsubmit:hover, .profile-avt-btnsubmit-google:hover {
     background-color: var(--buttonBackgroundColorOnHover);
 }
 

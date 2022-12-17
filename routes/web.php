@@ -32,7 +32,7 @@ use Illuminate\Http\Request;
 
 // admin 
 Route::prefix('/admin') -> name('admin') -> group( function () {
-    Route::get('adminPage', [AdminController::class, 'index']);
+    Route::get('dashboard', [AdminController::class, 'index']);
     Route::resources([
        'category' => CategoryController::class,
        'film' => FilmController::class,
@@ -130,7 +130,6 @@ Route::prefix('category_film') -> name('category_film') -> group( function () {
 });
 
 Route::get('/test', [TestController::class, 'test_icon']);
-
 
 // Route::get('/user', function () {
 //     echo session('user_id');
