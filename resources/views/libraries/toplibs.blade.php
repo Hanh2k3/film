@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{{ asset('admin/template/img/favicon.ico') }}" />
+
 <link rel="stylesheet" href="{{ asset('clients/themify-icons-font/themify-icons/themify-icons.css') }}">
 
 <!-- Fonts -->

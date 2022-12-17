@@ -166,7 +166,6 @@
             <div class="comment_container">
                 @if (session('user_id'))
                     <form action="#" method="GET">
-
                         <textarea name="comment" id="comment" class="cmt_1 comment_a" cols="10" rows="5"></textarea>
                         <div class="div_comment">
                             <i class="first-btn ti-comments-smiley" id="binh_luan"></i>

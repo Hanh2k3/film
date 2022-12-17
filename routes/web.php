@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\StoreController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Client\ListFilmController;
+use App\Http\Controllers\Client\SearchController;
 use Illuminate\Http\Request;
 
 /*
@@ -128,6 +129,9 @@ Route::prefix('/forget-password') -> name('forget_password.') -> group( function
 Route::prefix('category_film') -> name('category_film') -> group( function () {
     Route::get('list/{id}', [ListFilmController::class, 'list_film_category']) -> name('list_film_category');
 });
+
+// search film 
+Route::get('search_film', [SearchController::class, 'index']) -> name('search_film');
 
 Route::get('/test', [TestController::class, 'test_icon']);
 

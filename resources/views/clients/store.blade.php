@@ -24,7 +24,7 @@
                 @foreach ($followedFilm as $film)
                     <div class="store-film">
                         <div class="store-film-img">
-                            <img src="{{ $film->img }}" alt="">
+                            <img src="{{ asset("uploads/avatar_film/$film->img") }}" alt="">
                         </div>
                         <div class="store-film-name" onclick="$(this).children()[0].click()">
                             <a href="{{ route('infor.view', $film->film_id) }}"></a>
