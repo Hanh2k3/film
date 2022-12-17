@@ -6,13 +6,13 @@
 
 .login-google img {
     width: 330px;
-    height: 66px; 
+    height: 66px;
 }
 
 .login form {
-    margin-top: 20px; 
+    margin-top: 20px;
     width: 500px;
-    
+
 }
 
 .login form .item label {
@@ -22,6 +22,7 @@
     color: #ccc;
     margin-top: 15px;
 }
+
 .login form .item input {
     line-height: 20px;
     width: 100%;
@@ -33,7 +34,9 @@
     box-sizing: border-box;
     outline: none;
 }
-input, button {
+
+input,
+button {
     border: 0;
     border-radius: 0;
     margin: 0;
@@ -51,26 +54,31 @@ input, button {
     display: flex;
     align-items: center;
 }
+
 .btn-login button {
     display: inline-flex;
     border-radius: 5px;
     margin: 0 2px;
     padding: 10px;
-    border-bottom: 3px solid #000000;;
+    border-bottom: 3px solid #000000;
+    ;
     cursor: pointer;
     color: #fff;
     background-color: #b73a3a;
     transition: all 0.3s;
 }
+
 .btn-login button:hover {
     opacity: 0.5;
 }
+
 .btn-login a {
     margin: 0 10px;
     text-decoration: none;
     color: #cac9c9;
     text-align: center;
 }
+
 .btn-login a:hover {
     color: rgb(201, 201, 24)
 }
@@ -83,11 +91,13 @@ input, button {
     background-color: #369e69;
     text-decoration: none;
     color: #cac9c9;
-    border-bottom: 3px solid #000000;;
+    border-bottom: 3px solid #000000;
+    ;
     cursor: pointer;
-    transition: all 0.3s; 
+    transition: all 0.3s;
 
 }
+
 .btn-register a:hover {
-    opacity: 0.7; 
+    opacity: 0.7;
 }

@@ -4,11 +4,11 @@ document.querySelector(".detail_list .content_film").style.display = "none";
 
 
 const nameButtonContent = () => {
-    return document.getElementById("btn_detail_film").innerHTML 
+    return document.getElementById("btn_detail_film").innerHTML
         = (document.querySelector(".detail_list table")
             .style.display === "none")
-                ? "Chi tiết phim"
-                : "Nội dung phim"; 
+            ? "Chi tiết phim"
+            : "Nội dung phim";
 }
 nameButtonContent();
 
@@ -16,11 +16,11 @@ const handleDetailFilm = () => {
     const a = document.querySelector(".detail_list table")
     const b = document.querySelector(".detail_list .content_film")
 
-    if(a.style.display === "none"){
+    if (a.style.display === "none") {
         a.style.display = "table"
         b.style.display = "none"
         nameButtonContent();
-    }else {
+    } else {
         b.style.display = "table"
         a.style.display = "none"
         nameButtonContent();

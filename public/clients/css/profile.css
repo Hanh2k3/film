@@ -14,16 +14,20 @@
     border-radius: 5px;
     font-weight: bolder;
 }
+
 .p-profile-title div {
     display: flex;
     align-items: center;
     width: fit-content;
 }
-.p-profile-title p, .p-profile-title i {
+
+.p-profile-title p,
+.p-profile-title i {
     color: var(--titleColor);
     font-size: 18px;
     margin: 0;
 }
+
 .p-profile-title i {
     font-size: 24px;
     margin-right: 6px;
@@ -38,6 +42,7 @@
     border-radius: 5px;
     border: solid 1px var(--titleColor);
 }
+
 .profile {
     margin: 0;
     padding: 10px;
@@ -45,6 +50,7 @@
     width: 100%;
     background-color: #404040;
 }
+
 .profile-main {
     width: 60%;
     margin: auto;
@@ -55,25 +61,29 @@
     box-shadow: 0 0 3px white;
     padding-bottom: 20px;
 }
+
 .profile-avt {
     margin-left: auto;
     margin-right: auto;
     width: 150px;
 }
+
 .profile-avt img {
     width: 100%;
     height: 150px;
     padding: 2px;
     border: solid 2px grey
 }
+
 .profile-avt form {
     height: 0;
     visibility: hidden;
 }
+
 .profile-avt-btnsubmit {
     display: block;
     padding: 3px 10px;
-    color:  rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     background-color: var(--buttonBackgroundColor);
     border: solid 1px white;
     border-radius: 5px;
@@ -83,6 +93,7 @@
     box-shadow: 0 0 7px black inset;
     text-shadow: var(--textShadow);
 }
+
 .profile-avt-btnsubmit:hover {
     background-color: var(--buttonBackgroundColorOnHover);
 }
@@ -98,18 +109,21 @@
     border-radius: 5px;
     border: solid 1px grey;
     margin-bottom: 10px;
-    
+
 }
+
 .profile-infor div {
     display: flex;
     flex-direction: column;
 }
+
 .profile-infor div label {
     margin-bottom: 10px;
     font-weight: 500;
     color: white;
     text-shadow: 0 0 3px black;
 }
+
 .profile-infor div input {
     padding: 3px 10px;
     margin-bottom: 10px;
@@ -117,6 +131,7 @@
     pointer-events: none;
     border-style: solid;
 }
+
 .profile-infor button {
     padding: 0;
     margin: 0;
@@ -135,21 +150,26 @@
     font-size: var(--fontSize);
     cursor: pointer;
 }
+
 .profile-infor-btnedit {
     margin: auto;
 }
+
 .profile-infor-btnedit:hover {
     background-color: var(--buttonBackgroundColorOnHover);
 }
+
 .profile-infor-btngroup {
     display: flex;
     width: fit-content;
     margin: auto;
     display: none;
 }
+
 .profile-infor-btngroup div {
     margin: 0px 10px;
 }
+
 .profile-infor-created input:disabled {
     background-color: white;
     color: black;

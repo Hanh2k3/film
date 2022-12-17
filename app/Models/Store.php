@@ -26,9 +26,9 @@ class Store extends Model
                 ['film_id', $film_id]
             ])
             ->get();
-        if(sizeof($followedFilm) > 0)
+        if (sizeof($followedFilm) > 0)
             return true;
-        else 
+        else
             return false;
     }
     static public function insertFilm($item)

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -43,57 +44,68 @@ class User extends Authenticatable
     ];
 
     // insert_user 
-    static function insert_user($data) {
+    static function insert_user($data)
+    {
         DB::table('users')->insert($data);
     }
 
-    static function insert_user_google($data) {
+    static function insert_user_google($data)
+    {
         $id = DB::table('users')->insertGetId($data);
-        return $id; 
+        return $id;
     }
     // get user by email 
-    static function get_user_by_email($email) {
-        $email = DB::table('users')-> select('user_email', 'user_name', 'user_id') -> where('user_email', $email) -> first();
-        return $email ; 
+    static function get_user_by_email($email)
+    {
+        $email = DB::table('users')->select('user_email', 'user_name', 'user_id')->where('user_email', $email)->first();
+        return $email;
 
     }
     // get user by id 
-    static function get_user_by_id($user_id) {
-        $user = DB::table('users')-> select('user_email', 'user_name', 'avt', 'provider', 'created_at') -> where('user_id', $user_id) -> first();
-        return $user ; 
+    static function get_user_by_id($user_id)
+    {
+        $user = DB::table('users')->select('user_email', 'user_name', 'avt', 'provider', 'created_at')->where('user_id', $user_id)->first();
+        return $user;
     }
 
-    static function check_user($email, $password) {
-        $user = DB::table('users') -> where('user_email', $email) -> where('password', $password) -> first();
-        return $user ;
+    static function check_user($email, $password)
+    {
+        $user = DB::table('users')->where('user_email', $email)->where('password', $password)->first();
+        return $user;
     }
 
     // update token 
-    static function update_token($id, $token) {
-        DB::table('users')-> where('user_id', $id) -> update($token); 
+    static function update_token($id, $token)
+    {
+        DB::table('users')->where('user_id', $id)->update($token);
     }
 
-    static function check_token($id, $token) {
-        $token = DB::table('users') -> select('token')->where('user_id', $id) -> where('token', $token)-> first(); 
-        return $token; 
+    static function check_token($id, $token)
+    {
+        $token = DB::table('users')->select('token')->where('user_id', $id)->where('token', $token)->first();
+        return $token;
     }
 
     // change password 
-    static function change_password($user_id, $password) {
-        DB::table('users') -> where('user_id', $user_id) -> update(['password' => $password]);
+    static function change_password($user_id, $password)
+    {
+        DB::table('users')->where('user_id', $user_id)->update(['password' => $password]);
     }
 
-    static function check_google($user_email) {
-        $user = DB::table('users')->where('user_email', $user_email) -> first();
-        return $user; 
+    static function check_google($user_email)
+    {
+        $user = DB::table('users')->where('user_email', $user_email)->first();
+        return $user;
     }
 
     //update avatar
-    static function update_avatar($user_id, $new_name) {
+    static function update_avatar($user_id, $new_name)
+    {
         DB::table('users')->where('user_id', $user_id)->update(['avt' => $new_name]);
     }
     //update user
-    static function update_user($user_id, $user_name, $user_email) {
-        DB::table('users')->where('user_id', $user_id)->update(['user_name'=>$user_name, 'user_email'=>$user_email]);
+    static function update_user($user_id, $user_name, $user_email)
+    {
+        DB::table('users')->where('user_id', $user_id)->update(['user_name' => $user_name, 'user_email' => $user_email]);
     }
 }

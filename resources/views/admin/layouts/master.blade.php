@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,6 +10,7 @@
     <title>Trang Quản Trị</title>
     @include('libraries.toplibs')
 </head>
+
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -29,6 +31,7 @@
             </div>
         </div>
     </div>
-@include('libraries.bottomlibs')
+    @include('libraries.bottomlibs')
 </body>
+
 </html>

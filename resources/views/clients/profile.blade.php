@@ -24,8 +24,7 @@
             <div class="profile">
                 <div class="profile-main">
                     <div class="profile-avt">
-                        <img src="{{ !$user->provider ? '/uploads/avatar/' . $user->avt : $user->avt }}"
-                            alt="">
+                        <img src="{{ !$user->provider ? '/uploads/avatar/' . $user->avt : $user->avt }}" alt="">
                         <form action="{{ route('profile.update_avatar') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="text" name="old_avatar" value="{{ $user->avt }}">
@@ -76,7 +75,10 @@
         });
 
         $(".profile-infor-btnedit").click(() => {
-            $('.profile-infor-name input, .profile-infor-email input').css({'pointer-events': 'all', 'border-color': 'rgb(233, 190, 0)'}); 
+            $('.profile-infor-name input, .profile-infor-email input').css({
+                'pointer-events': 'all',
+                'border-color': 'rgb(233, 190, 0)'
+            });
             $(".profile-infor-btnedit").css('display', 'none');
             $(".profile-infor-btngroup").css('display', 'flex');
         });
