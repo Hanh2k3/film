@@ -25,7 +25,6 @@ class HomeController extends Controller
             $list_film[$i] = sizeof(Episode::getListEpisodes($film_id));
             $i += 1;
         }
-        $i = 0;
 
         $list_score_1 = null;
         $i = 0;

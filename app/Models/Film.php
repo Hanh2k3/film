@@ -40,4 +40,13 @@ class Film extends Model
         }
         return $query;
     }
+
+    static function search_film($key) {
+        $listFilm = DB::table('film')
+                    ->where('film_name', 'like' ,'%' . $key . '%')
+                    ->orWhere('description', 'like', '%' . $key . '%')
+                    ->orWhere('episodes_quantity','like', '%' . $key . '%')
+                    -> get();
+        return $listFilm;
+    }
 }

@@ -5,8 +5,8 @@
     </a>
 </div>
 <div class="search-bar">
-    <form action="" class="">
-        <input type="text" name="" id="" class="" placeholder="Search...">
+    <form action="{{ route('search_film') }}">
+        <input type="text" name="key" id="" class="" placeholder="Search..." required>
         <button><i class="ti-search"></i></button>
     </form>
 </div>
