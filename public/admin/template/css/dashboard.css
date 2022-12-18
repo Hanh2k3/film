@@ -1,0 +1,14 @@
+.card-body p{
+    font-size: 12px;
+}
+.admin-table-user::-webkit-scrollbar  {
+    opacity: 0;
+    width: 5px;
+    height: 6px;
+    padding: 2px;
+}
+.admin-table-user::-webkit-scrollbar-thumb  {
+    background-color: #cbedb8;
+    box-shadow: 0 0 1px black;
+    border-radius: 2px;
+}

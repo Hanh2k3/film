@@ -33,6 +33,7 @@
         </div>
     </div>
     @include('libraries.bottomlibs')
+    @yield('script')
 </body>
 
 </html>

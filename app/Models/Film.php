@@ -49,4 +49,14 @@ class Film extends Model
                     -> get();
         return $listFilm;
     }
+    
+    //Admin
+    static function count_film() {
+        return DB::table('film')
+            ->join('episodes', 'film.film_id', '=', 'episodes.film_id')
+            ->selectRaw('film.film_id, film_name, episodes_quantity, count(episode_id) as aired_episodes, sum(view) as view')
+            ->groupByRaw('film.film_id, episodes_quantity, film_name')
+            ->orderBy('view', 'DESC')
+            ->get();
+    }
 }
