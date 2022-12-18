@@ -32,7 +32,7 @@ use Illuminate\Http\Request;
 
 // admin 
 Route::prefix('/admin') -> name('admin') -> group( function () {
-    Route::get('adminPage', [AdminController::class, 'index']);
+    Route::get('adminPage', [AdminController::class, 'index'])->name('home');
     Route::resources([
        'category' => CategoryController::class,
        'film' => FilmController::class,

@@ -37,6 +37,9 @@
         <div>{{$user_name}}</div>
     </div>
     <a href="{{ route('profile.index') }}">Thông tin tài khoản</a>
+    @if (session('type_user') == 'admin')
+        <a href="{{route('adminhome')}}">Trang quản trị</a>
+    @endif
     <a href="{{route('logout')}}">Đăng xuất</a>
     
 </div>
