@@ -38,4 +38,21 @@ class SearchController extends Controller
         
         
     }
+
+    public function filter_by_year(Request $request) {
+        $year = $request->year;
+        $film = Film::get_by_year($year);
+        $film_new = $film;
+        $list_film_new = null;
+        $i = 0;
+        foreach ($film_new as $item) {
+            $film_id = $item->film_id;
+            $list_film_new[$i] = sizeof(Episode::getListEpisodes($film_id));
+
+            $list_score[$i] = Evaluate::get_avg_evaluation($film_id);
+            $i += 1;
+        }
+        return view('clients.year_film', compact('film_new', 'list_film_new', 'list_score', 'year'));
+        
+    }
 }
