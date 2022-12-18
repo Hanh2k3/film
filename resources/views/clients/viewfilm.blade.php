@@ -24,7 +24,7 @@
                 <a href="#" class="fw-700"><i class="ti-video-clapper"></i>{{ $film[0]->film_name }}</a>
                 <div class="fw-700">
                     <span>Đang xem Tập {{ $episode }}</span>
-                    <span>Đăng tải ? giờ trước</span>
+                   
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
             <div class="list_episode">
                 <div class="heading">
                     <span class="fw-700">Danh sách tập</span>
-                    <span class="fw-600">Lần trước xem<a href="#">Tập 1</a></span>
+                   
                 </div>
                 <div class="list_item_episode scroll-bar">
                     @foreach ($list_episodes as $item)
@@ -133,7 +133,7 @@
                                             <div>
                                                 <p><button href="#" class="answer"
                                                         data-id="{{ $comment->comment_id }}">Trả lời</button></p>
-                                                <p class="c_comment_time">{{ $comment->created_at }}</p>
+                                                <p class="c_comment_time">{{ date_format(date_create($comment->created_at), ' H:i d/m/Y ') }}</p>
                                             </div>
 
                                         </div>
@@ -160,7 +160,7 @@
                                                             href="#">{{ $sub->user_name }}</a>
                                                         <p class="c_comment_content">{{ $sub->comment_content }}</p>
                                                         <div>
-                                                            <p class="c_comment_time">{{ $sub->created_at }}</p>
+                                                            <p class="c_comment_time">{{ date_format(date_create($sub->created_at), ' H:i d/m/Y ') }}</p>
                                                         </div>
 
                                                     </div>
