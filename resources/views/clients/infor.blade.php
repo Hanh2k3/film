@@ -184,7 +184,7 @@
                                         <div>
                                             <p><button href="#" class="answer"
                                                     data-id="{{ $comment->comment_id }}">Trả lời</button></p>
-                                            <p class="c_comment_time">{{ $comment->created_at }}</p>
+                                            <p class="c_comment_time">{{ date_format(date_create($comment->created_at), ' H:i d/m/Y ') }}</p>
                                         </div>
 
                                     </div>
@@ -210,7 +210,7 @@
                                                     <a class="c_comment_user" href="#">{{ $sub->user_name }}</a>
                                                     <p class="c_comment_content">{{ $sub->comment_content }}</p>
                                                     <div>
-                                                        <p class="c_comment_time">{{ $sub->created_at }}</p>
+                                                        <p class="c_comment_time">{{ date_format(date_create($sub->created_at), ' H:i d/m/Y ')  }}</p>
                                                     </div>
 
                                                 </div>
