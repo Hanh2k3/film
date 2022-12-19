@@ -76,6 +76,8 @@ class LoginController extends Controller
                 session()->put('user_avatar', $email->avt);
                 session()->put('type_user', $user->type_user);
 
+                dd(session('type_user'));
+
                 session()->put('google', 'google');
                 return redirect()->route('home.');
             } else {
