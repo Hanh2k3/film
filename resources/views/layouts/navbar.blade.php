@@ -41,7 +41,6 @@
         <a href="{{route('adminhome')}}">Trang quản trị</a>
     @endif
     <a href="{{route('logout')}}">Đăng xuất</a>
-    
 </div>
 @endif
 
