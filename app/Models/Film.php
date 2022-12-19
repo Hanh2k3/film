@@ -27,6 +27,16 @@ class Film extends Model
         return $film;
     }
 
+    static function get_film_new() {
+        $list = DB::table('film')->orderBy('release_date', 'ASC')->limit(15)->get();
+        return $list; 
+    }
+
+    static function getFilm_id($id) {
+        $film = DB::table('film')->where('film_id', $id) -> first();
+        return $film; 
+    }
+
     static function getFilmbyName($film_name)
     {
         $film = DB::table('film')->where('film_name', $film_name)->first();
