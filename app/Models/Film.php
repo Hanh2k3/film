@@ -50,16 +50,25 @@ class Film extends Model
             ->get();
         return $listFilm;
     }
-
+    
     static function get_listYear()
     {
         $list = DB::table('film')->select('release_date')->orderBy('release_date', 'DESC')->get();
         return $list;
     }
-
+    
     static function get_by_year($year)
     {
         $list = DB::table('film')->where('release_date', 'like', $year . "%")->orderBy('release_date', 'DESC')->get();
-        return $list; 
+        return $list;
+    }
+    //Admin
+    static function count_film() {
+        return DB::table('film')
+            ->join('episodes', 'film.film_id', '=', 'episodes.film_id')
+            ->selectRaw('film.film_id, film_name, episodes_quantity, count(episode_id) as aired_episodes, sum(view) as view')
+            ->groupByRaw('film.film_id, episodes_quantity, film_name')
+            ->orderBy('view', 'DESC')
+            ->get();
     }
 }

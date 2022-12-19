@@ -108,4 +108,37 @@ class User extends Authenticatable
     {
         DB::table('users')->where('user_id', $user_id)->update(['user_name' => $user_name, 'user_email' => $user_email]);
     }
+    //Update last_login
+    static function updateLastLogin($user_id) {
+        DB::table('users')->where('user_id', '=', $user_id)->update(['last_login' => date('Y-m-d H-i-s')]);
+    }
+
+    //Admin
+    static function get_user() {
+        return DB::table('users')
+            ->select('*')
+            ->where('type_user', '<>', 'admin')
+            ->get();
+    }
+    static function user_today() {
+        return DB::table('users')
+            ->select('*')
+            ->where('type_user', '<>', 'admin')
+            ->whereRaw('day(last_login) = day(curdate()) and month(last_login) = month(curdate()) and year(last_login) = year(curdate())')
+            ->count();
+    }
+    static function user_month() {
+        return DB::table('users')
+            ->select('*')
+            ->where('type_user', '<>', 'admin')
+            ->whereRaw('month(last_login) = month(curdate()) and year(last_login) = year(curdate())')
+            ->count();
+    }
+    static function user_year() {
+        return DB::table('users')
+            ->select('*')
+            ->where('type_user', '<>', 'admin')
+            ->whereRaw('year(last_login) = year(curdate())')
+            ->count();
+    }
 }

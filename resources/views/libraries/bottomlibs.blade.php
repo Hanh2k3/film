@@ -9,7 +9,7 @@
 <!-- endbuild -->
 
 <!-- Vendors JS -->
-<script src="{{ asset('admin/template/vendor/libs/apex-charts/apex-charts.js') }}"></script>
+<script src="{{ asset('admin/template/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
 <!-- Main JS -->
 <script src="{{ asset('admin/template/js/main.js') }}"></script>

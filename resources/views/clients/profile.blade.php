@@ -25,13 +25,19 @@
                 <div class="profile-main">
                     <div class="profile-avt">
                         <img src="{{ !$user->provider ? '/uploads/avatar/' . $user->avt : $user->avt }}" alt="">
-                        <form action="{{ route('profile.update_avatar') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="text" name="old_avatar" value="{{ $user->avt }}">
-                            <input type="file" name="new_avatar" value="">
-                            <button>Cập nhật</button>
-                        </form>
-                        <button class="profile-avt-btnsubmit" onclick="">Đổi ảnh</button>
+                        @if ($user->provider)
+                            <button class="profile-avt-btnsubmit-google"
+                                onclick="location.href = 'https://myaccount.google.com/?utm_source=chrome-profile-chooser&pli=1'">Đổi ảnh</button>
+                        @else
+                            <form action="{{ route('profile.update_avatar') }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="old_avatar" value="{{ $user->avt }}">
+                                <input type="file" name="new_avatar" value="">
+                                <button>Cập nhật</button>
+                            </form>
+                            <button class="profile-avt-btnsubmit" onclick="">Đổi ảnh</button>
+                        @endif
                     </div>
                     <form class="profile-infor" action="{{ route('profile.update_user') }}" method="post">
                         @csrf
@@ -54,7 +60,6 @@
                         <div class="profile-infor-btnsave profile-infor-btn">Lưu</div>
                         <div class="profile-infor-btncancel profile-infor-btn">Hủy</div>
                     </div>
-
                 </div>
             </div>
         </div>
