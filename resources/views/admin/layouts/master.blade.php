@@ -15,7 +15,7 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu" style="background-color: #404040">
                 @include('admin.layouts.slidebar')
             </aside>
             <div class="layout-page">
