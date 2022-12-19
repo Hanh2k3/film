@@ -33,9 +33,9 @@ use Illuminate\Http\Request;
 
 // admin
 Route::prefix('admin') -> name('admin') -> group( function () {
-    Route::get('/index', 'App\Http\Controllers\admin\AdminController@index')->name('index');
+    Route::get('/index', [AdminController::class, 'index'])->name('index');
     Route::prefix('user')->name('user.')->group(function () {
-        Route::delete('/','App\Http\Controllers\admin\AdminController@deleteUser' )->name('delete');
+        Route::delete('/',[AdminController::class, 'deleteUser'])->name('delete');
     });
     Route::resources([
        'category' => CategoryController::class,

@@ -18,10 +18,11 @@ class UpdateLastLogin
     public function handle(Request $request, Closure $next)
     {
         User::updateLastLogin(session('user_id'));
-        $response = $next($request);
- 
-        // Perform action
- 
-        return $response;
+        
+        if($request) {
+            $response = $next($request);
+            return $response;
+        }
+       
     }
 }
