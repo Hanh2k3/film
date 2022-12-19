@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="col-md-12">
-        <h1>THÊM PHIM MỚI</h1>
+    <div class="col-md-12 g_container">
+        <h1 class="g_title">THÊM PHIM MỚI</h1>
         <form action="{{ route('adminfilm.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group col-4 mb-3">

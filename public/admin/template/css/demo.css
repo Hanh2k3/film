@@ -2,6 +2,26 @@
 * demo.css
 * File include item demo only specific css only
 ******************************************************************************/
+.g_scroll {
+  overflow: scroll;
+}
+.g_scroll::-webkit-scrollbar  {
+  opacity: 0;
+  width: 5px;
+  height: 6px;
+  padding: 2px;
+}
+.g_scroll::-webkit-scrollbar-thumb  {
+  background-color: #0000001d;
+  border-radius: 2px;
+}
+.g_title {
+  font-size: 24px;
+  padding: 0;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  border-bottom: solid 2px rgb(133, 146, 163);
+}
 
 .menu .app-brand.demo {
   height: 64px;
@@ -105,3 +125,84 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+
+/* Sidebar */
+.layout-menu {
+  background-color: #525252;
+}
+.admin-logo { 
+  display: block;
+  margin: 0 !important;
+  background-color: #404040;
+  width: 100%;
+  padding: 13px;
+  height: fit-content !important;
+  box-shadow: -1px 1px 1px #2a2a2a;
+}
+.app-brand-link {
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(38, 38, 38) inset;
+}
+.app-brand-logo {
+  width: 100%;
+}
+.menu-inner {
+  width: 100%;
+  padding: 10px 5px;
+}
+.menu-item {
+  width: 100% !important;
+  background-color: #404040;
+  box-shadow: 0 0 2px #000000;
+  margin: 3px 0 !important;
+  border-radius: 3px;
+}
+.menu-item .menu-item {
+  width: 100% !important;
+  background-color: #404040;
+  border-top: solid 1px #545454;
+  box-shadow: unset;
+  margin: 0 !important;
+  border-radius: 0;
+}
+.menu-item a {
+  color: rgb(196, 196, 196) !important;
+}
+.menu-item:hover {
+  background-color: #373737;
+}
+
+/* content page */
+.layout-page {
+  background-color: #6d6d6d;
+}
+
+.card {
+  background-color: #e0e0e0;
+  box-shadow: 0 0 3px #404040;
+  padding: 5px 10px;
+}
+
+div.card-title {
+  border-bottom: solid 2px rgb(133, 146, 163);
+}
+.table {
+  background-color: rgb(244, 244, 244);
+}
+.table-head {
+  background-color: rgb(196, 196, 196);
+}
+
+.g_container {
+  background-color: #eaeaea;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #404040;
+}
+

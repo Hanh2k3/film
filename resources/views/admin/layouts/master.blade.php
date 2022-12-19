@@ -15,9 +15,9 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <aside id="layout-menu" class="layout-menu menu-vertical menu" style="background-color: #404040">
+            <div id="layout-menu" class="layout-menu menu-vertical">
                 @include('admin.layouts.slidebar')
-            </aside>
+            </div>
             <div class="layout-page">
                 @include('admin.layouts.navbar')
                 <div class="content-wrapper">

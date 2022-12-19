@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="col-md-12">
-        <h1>SỬA THÔNG TIN PHIM</h1>
+    <div class="col-md-12 g_container">
+        <h1 class="g_title">SỬA THÔNG TIN PHIM</h1>
         <form action="{{ route('adminfilm.update', $getfilm->film_id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
