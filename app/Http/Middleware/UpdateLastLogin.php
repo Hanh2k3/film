@@ -17,7 +17,7 @@ class UpdateLastLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        // User::updateLastLogin(session('user_id'));
-        // return $next($request);
+        User::updateLastLogin(session('user_id'));
+        return $next($request);
     }
 }
