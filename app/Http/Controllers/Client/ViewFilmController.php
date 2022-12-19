@@ -18,9 +18,6 @@ class ViewFilmController extends Controller
 
         $episodes_qty = sizeof($list_episodes);
 
-
-
-
         if ($episode > $episodes_qty) {
             return back();
         } else {
@@ -42,6 +39,13 @@ class ViewFilmController extends Controller
             }
         }
         $total = sizeof(Episode_cmt::get_all($episode, $film_id));
+
+        
+
+        // update view 
+        $number_view = Episode::getView($film_id, $episode); 
+        Episode::add_view($film_id, $episode, ['view' => $number_view->view + 1]); 
+        
 
         return view('clients.viewfilm', compact('film', 'list_episodes', 'episode', 'link', 'list_cmt', 'total', 'film_id'));
     }

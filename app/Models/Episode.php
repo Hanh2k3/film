@@ -22,7 +22,14 @@ class Episode extends Model
         return $episode;
     }
 
+    static function getView($film_id, $episode_number) {
+        $rs = DB::table('episodes')->where('film_id', $film_id)->where('episode_number', $episode_number)->select('view')->first();
+        return $rs; 
+    }
 
+    static function add_view($film_id, $episode_number, $data) {
+        DB::table('episodes')->where('film_id', $film_id) -> where('episode_number', $episode_number)->update($data);
+    }
 
 
 
