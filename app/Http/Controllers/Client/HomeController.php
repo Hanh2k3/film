@@ -15,8 +15,11 @@ class HomeController extends Controller
     public function index()
     {
         // get list film đề cử 
-        $film = Film::getListFilm(4);
-
+        $film = null;
+        $arr_film = Film::count_film();
+        for ($t = 0; $t < 10; $t++) {
+            $film[$t] = Film::getFilm_id($arr_film[$t]->film_id);
+        }
 
         $list_film = null;
         $i = 0;
@@ -25,7 +28,6 @@ class HomeController extends Controller
             $list_film[$i] = sizeof(Episode::getListEpisodes($film_id));
             $i += 1;
         }
-
         $list_score_1 = null;
         $i = 0;
         foreach ($film as $item) {
@@ -36,7 +38,7 @@ class HomeController extends Controller
             $i += 1;
         }
         // get film new
-        $film_new = Film::getListFilm(5);
+        $film_new = Film::get_film_new();
         $list_film_new = null;
         $i = 0;
         foreach ($film_new as $item) {
