@@ -33,16 +33,16 @@ use Illuminate\Http\Request;
 
 // admin
 Route::prefix('admin') -> name('admin') -> group( function () {
-    Route::get('/index', [AdminController::class, 'index'])->name('index');
+    Route::get('/index', 'App\Http\Controllers\admin\AdminController@index')->name('index');
     Route::prefix('user')->name('user.')->group(function () {
-        Route::delete('/', [AdminController::class, 'deleteUser'])->name('delete');
+        Route::delete('/','App\Http\Controllers\admin\AdminController@deleteUser' )->name('delete');
     });
     Route::resources([
        'category' => CategoryController::class,
        'film' => FilmController::class,
        'episode' => EpisodeController::class,
     ]);
-    Route::get('create/{film_id}', [EpisodeController::class, 'createEpisode'])->name('create_episode');
+    Route::get('create/{film_id}', 'App\Http\Controllers\admin\AdminController@createEpisode')->name('create_episode');
 }); 
 
 
