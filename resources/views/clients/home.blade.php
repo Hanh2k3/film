@@ -13,50 +13,49 @@
 @endsection
 
 @section('content')
-    <div class="carousel margin-20">
-        <div class="banner">
+    <div class="carousel">
+        <div class="banner g_heading">
             <div>Phim đề cử</div>
         </div>
 
-        <div class="swiper mySwiper slide-container" id="slide">
-            <div class="swiper-wrapper">
-                @php
-                    $i = 0;
-                @endphp
-
-                @foreach ($film as $item)
-                    @php
-                        $score = number_format($list_score_1[$i][0]->score, 1);
-                    @endphp
-                    <div id="card" class="swiper-slide">
-                        <a href="{{ route('infor.view', ['id' => $item->film_id]) . '?score=' . $score }}">
-                            <div>
-                                <img src="{{ asset("uploads/avatar_film/$item->img") }}" style="width: 250px; height: 350px"
-                                    alt="">
+        <div id="slide">
+            <div class="slide-container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @php
+                            $i = 0;
+                        @endphp
+        
+                        @foreach ($film as $item)
+                            @php
+                                $score = number_format($list_score_1[$i][0]->score, 1);
+                            @endphp
+                            <div id="card" class="swiper-slide">
+                                <a href="{{ route('infor.view', ['id' => $item->film_id]) . '?score=' . $score }}">
+                                    <div>
+                                        <img src="{{ asset("uploads/avatar_film/$item->img") }}" style="width: 250px; height: 350px"
+                                            alt="">
+                                    </div>
+                                </a>
+                                <div class="name">{{ $item->film_name }}</div>
+                                <div class="episode-lastes">{{ $list_film[$i] }}/{{ $item->episodes_quantity }}</div>
                             </div>
-                        </a>
-                        <div class="name">{{ $item->film_name }}</div>
-                        <div class="episode-lastes">{{ $list_film[$i] }}/{{ $item->episodes_quantity }}</div>
+                            @php
+                                $i += 1;
+                            @endphp
+                        @endforeach
+        
                     </div>
-                    @php
-                        $i += 1;
-                    @endphp
-                @endforeach
-
-
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </div>
-    <div class="margin-20">
-        <div class="banner">
-            <div>Phim mới nhất</div>
-        </div>
+    <div class="banner g_heading">
+        <div>Phim mới nhất</div>
     </div>
 
-    <div class="movies-list margin-20">
-
-
+    <div class="movies-list">
         @php
             $i = 0;
         @endphp

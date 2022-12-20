@@ -13,10 +13,9 @@
 
 @section('content')
     <div class="main-container">
-        <div class="p-store-title">
+        <div class="g_heading">
             <div>
-                <i class="ti-bookmark-alt"></i>
-                <p>Kho Phim</p>
+                <p class="p-0 m-0"><i class="ti-bookmark-alt me-2"></i>Kho Phim</p>
             </div>
         </div>
         <div class="p-store-container">

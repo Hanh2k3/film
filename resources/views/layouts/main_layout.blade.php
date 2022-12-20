@@ -25,7 +25,7 @@
         <div class="drop_down un_active" id="drop">
             @include('layouts.drop_down')
         </div>
-        <div class="content">
+        <div id="content">
             @yield('content')
         </div>
 

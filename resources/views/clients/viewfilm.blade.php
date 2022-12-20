@@ -20,11 +20,9 @@
 @section('content')
     <div class="f_content">
         <div class="watch_film">
-            <div class="intro_film">
-                <a href="#" class="fw-700"><i class="ti-video-clapper"></i>{{ $film[0]->film_name }}</a>
-                <div class="fw-700">
-                    <span>Đang xem Tập {{ $episode }}</span>
-                   
+            <div class="g_heading">
+                <div>
+                    <p class="m-0"><i class="ti-video-clapper me-2"></i>{{ $film[0]->film_name }}</p>
                 </div>
             </div>
 
@@ -78,10 +76,7 @@
                 </div>
             </div>
 
-            <div class="comment_film">
-
-
-
+            <div class="comment_film m-0 p-0 mt-4">
                 <div class="comment_head">
                     {{-- Put data here --}}
                     <p class="comment_title" id="total">Bình luận ({{ $total }})</p>

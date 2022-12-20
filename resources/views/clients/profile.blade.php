@@ -13,10 +13,9 @@
 
 @section('content')
     <div class="main-container">
-        <div class="p-profile-title">
+        <div class="g_heading">
             <div>
-                <i class="fa-regular fa-address-card"></i>
-                <p>Hồ sơ cá nhân</p>
+                <p class="m-0"><i class="fa-regular fa-address-card me-2"></i>Hồ sơ cá nhân</p>
             </div>
         </div>
 

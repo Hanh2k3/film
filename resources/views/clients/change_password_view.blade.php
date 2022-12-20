@@ -16,7 +16,7 @@
 
 @section('content')
     <div class="margin-20">
-        <div class="banner">
+        <div class="banner g_heading">
             <div>Lấy lại mật khẩu</div>
         </div>
     </div>

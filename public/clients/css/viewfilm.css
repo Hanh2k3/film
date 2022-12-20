@@ -1,6 +1,5 @@
 .f_content{
     height: auto;
-    padding: 20px;
 }
 .intro_film{
     border-radius: 5px;
@@ -142,7 +141,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    border: 2px solid rgba(255, 185, 112, 1);
+    border: 2px solid var(--headerBorderColor);
 }
 .list_episode .heading{
     display: flex;

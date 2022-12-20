@@ -1,6 +1,5 @@
 .main-container {
     width: 100%;
-    padding: 20px;
 }
 
 .p-profile-title {
@@ -37,10 +36,9 @@
     width: 100%;
     display: flex;
     margin-top: 10px;
-    background-color: var(--themeBackgroundColor);
-    padding: 20px;
+    background-color: var(--headerBorderColor);
+    padding: 10px;
     border-radius: 5px;
-    border: solid 1px var(--titleColor);
 }
 
 .profile {

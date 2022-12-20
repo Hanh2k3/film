@@ -45,9 +45,11 @@
         </div>
     </form>
     <div class="top_content">
-        <div class="name_film">
+        <div class="g_heading">
             {{-- Put data here --}}
-            <p><i class="ti-video-clapper"> </i> {{ $name_film }}</p>
+            <div>
+                <p class="m-0"><i class="ti-video-clapper mr-2"> </i> {{ $name_film }}</p>
+            </div>
         </div>
         <div class="main_film">
             <div class="poster_film" id="poster_film">
@@ -98,10 +100,9 @@
                     <div class="detail_list" id="detail_list">
         
                         <div class="detail_content content_film" style="display: table; ">
-                            <h5>Nội dung:</h5>
+                            <h5 class="g_title">Nội dung:</h5>
                             {{-- Put data here --}}
                             <p>{!! $description !!}</p>
-
                         </div>
                     </div>
                 </div>

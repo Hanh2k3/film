@@ -18,7 +18,7 @@
         <h1>Không có kết quả tìm kiếm</h1>
     @else
         <div class="margin-20">
-            <div class="banner">
+            <div class="banner g_heading">
                 <div>Kết quả tìm kiếm của {{ $key }}</div>
             </div>
         </div>

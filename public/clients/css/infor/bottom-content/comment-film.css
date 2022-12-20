@@ -2,26 +2,25 @@
     margin-left: 5px;
     background-color: var(--childBackgroundColor);
     flex: 1;
-    padding: 10px 0px;
+    padding: 10px;
     border-radius: 5px;
 }
 
 .comment_film .comment_head {
     display: flex;
-    width: 90%;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     margin: auto;
     padding: 6px;
     background-color: var(--themeBackgroundColor);
     color: var(--titleColor);
-    border-radius: 5px;
-    border: solid 1px var(--titleColor);
 }
 
 .comment_film .comment_head .comment_title {
     width: fit-content;
     font-size: var(--fontSize);
+    padding: 0 5px;
     font-weight: 500;
     margin: 0;
 }
@@ -42,18 +41,14 @@
 }
 
 .comment_film .comment_container {
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-top: 5px;
     padding: 10px;
-
-    background-color: var(--titleColor);
 }
 
 .comment_film .comment_container {
     background-color: var(--backgroundColor);
-    border-radius: 8px;
-    border: solid 1px var(--titleColor);
 }
 
 .comment_film .comment_container form {

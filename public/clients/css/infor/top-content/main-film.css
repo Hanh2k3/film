@@ -2,55 +2,47 @@
     width: 100%;
     display: flex;
     margin-top: 10px;
-    background-color: var(--themeBackgroundColor);
+    background-color: var(--headerBorderColor);
     padding: 10px;
     border-radius: 5px;
-    border: solid 1px var(--titleColor);
+    border: solid 1px var(--headerBorderColor);
 }
 
 .poster_film {
     background-color: var(--childBackgroundColor);
     width: 35%;
     max-width: 370px;   
-    padding: 10px 0px;
-    border-radius: 5px;
+    padding: 20px;
 }
 .poster_film .poster {
     position: relative;
-    width: 84%;
-    margin: auto;
-    background-color: var(--titleColor);
+    width: 100%;
     transition: all 0.5s;
     
 }
 .poster_film .poster img{
-    width: 100%;    
-    border-radius: 10px;
-    border: solid 1px var(--titleColor);
+    width: 100%;
+    border: solid 1px rgb(104, 104, 104);
 }
 .poster_film .poster > div {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 98%;
-    bottom: 1px;
-    margin-left: 1%;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.598);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    width: 100%;
+    bottom: 0px;
 }
 .poster_film .poster > div .button_box {
     display: none;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.598);
 }
 .poster_film .poster > div .button_box a {
     display: block;
     width: 50%;
     text-align: center;
     margin: 5px;
-    padding: 5px 0;
+    padding: 10px 0;
     font-size: var(--fontSize);
     text-decoration: none;
     color: var(--themeColor);
@@ -71,23 +63,21 @@
 }
 
 .poster_film .rate {
-    width: 84%;
-    margin: auto;
-    background-color: var(--themeBackgroundColor);
-    border-radius: 5px;
-    margin-top: 5px;
+    width: 100%;
+    padding: 2px;
+    margin-top: 7px;
     color: var(--themeColor);
     text-align: center;
     font-size: var(--fontSizeMini);
     padding: 5px;
-    border: solid 1px var(--titleColor)
+    background-color: var(--childBackgroundColor);
 }
+
 
 .detail_film {
     background-color: var(--childBackgroundColor);
     flex: 1;
-    padding: 10px 0px;
-    border-radius: 5px;
+    padding: 10px 5px;
     margin-left: 5px;
     display: flex;
     flex-direction: column;
@@ -95,16 +85,13 @@
     align-items: center;
 }
 .detail_film .detail {
-    width: 90%;
+    width: 100%;
     flex: 1;
 }
 .detail_film .detail .detail_list {
     width: 100%;
     height: 100%;
-    padding: 10px 0;
     overflow-y: scroll;
-    border: solid 1px var(--titleColor);
-    background-color: var(--backgroundColor);
 }
 .detail_film .detail .detail_list::-webkit-scrollbar {
     width: 5px;
