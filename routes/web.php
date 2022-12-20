@@ -42,7 +42,7 @@ Route::prefix('admin') -> name('admin') -> group( function () {
        'film' => FilmController::class,
        'episode' => EpisodeController::class,
     ]);
-    Route::get('create/{film_id}', 'App\Http\Controllers\admin\AdminController@createEpisode')->name('create_episode');
+    Route::get('create/{film_id}', [EpisodeController::class, 'createEpisode'])->name('create_episode');
 }); 
 
 

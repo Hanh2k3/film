@@ -4,12 +4,7 @@
     
 @endphp
 
-<div class="search-bar">
-    <form action="{{ route('search_film') }}">
-        <button><i class="ti-search"></i></button>
-        <input type="text" name="key" id="" class="" placeholder="Search..." required>
-    </form>
-</div>
+
 <div class="tab-links">
     <a href="#" onclick="display1(this,'category')" class="tab tab-active"><i>Thể loại</i></a>
     <a href="#" onclick="display1(this,'year')" class="tab"><i>Năm</i></a>
