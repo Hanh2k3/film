@@ -79,7 +79,7 @@
                 <div class="card">
                     <div class="row row-bordered g-0 mb-2 p-3">
                         <div class="card-title mb-4">
-                            <h5 class="text-nowrap mb-2 text-secondary">Tổng lượt xem</h5>
+                            <h5 class="text-nowrap mb-2 text-secondary">Danh sách tài khoản</h5>
                         </div>                        
                         <div class="admin-table-user"
                             style="
